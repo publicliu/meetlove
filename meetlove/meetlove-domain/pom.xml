@@ -25,6 +25,17 @@
 			<groupId>net.lw.ice</groupId>
 			<artifactId>ice-domain</artifactId>
 		</dependency>
+
+		<!-- test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+
 	</dependencies>
 
 </project>

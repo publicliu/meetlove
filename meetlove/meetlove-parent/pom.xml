@@ -20,6 +20,7 @@
 		<meetlove-api.version>0.1-SNAPSHOT</meetlove-api.version>
 		<meetlove-domain.version>0.1-SNAPSHOT</meetlove-domain.version>
 		<jackson.version>2.2.2</jackson.version>
+		<spring.version>4.0.1.RELEASE</spring.version>
 	</properties>
 
 	<packaging>pom</packaging>
@@ -106,12 +107,26 @@
 				<version>1.1.2</version>
 			</dependency>
 
+			<!-- Test -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+				<scope>test</scope>
+			</dependency>
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>3.8.1</version>
+				<version>4.11</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>1.9.5</version>
+				<scope>test</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
