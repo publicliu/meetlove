@@ -10,9 +10,12 @@ public interface IFoodInfo {
 
 	public void setName(String name);
 
-	public String getDesc();
+	public String getRemark();
 
-	public void setDesc(String desc);
+	public void setRemark(String remark);
+
+	public void setStatus(FoodStatus foodStatus);
+	public FoodStatus getStatus();
 
 	public List<IFoodResources> listResources();
 }

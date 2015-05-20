@@ -5,53 +5,87 @@
  */
 package net.lw.meetlove.domain.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 import net.lw.meetlove.api.entity.FoodResourcesType;
+import net.lw.meetlove.api.entity.IFoodInfo;
 import net.lw.meetlove.api.entity.IFoodResources;
 
 /**
  * @author liuwei
  *
  */
+@Entity
+@Table(name="ML_FOODRESOURCES")
 public class FoodResources implements IFoodResources {
 
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodResources#getId()
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "SEQ_ML_FOODRESOURCES")
+	@SequenceGenerator(name="SEQ_ML_FOODRESOURCES",sequenceName="SEQ_ML_FOODRESOURCES")
+	@Column(name="ID")
+	private long id;
+
+	@Column(name="NAME",nullable = false)
+	private String name;
+
+	@Column(name="type",nullable = false)
+	private FoodResourcesType type;
+
+
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity = net.lw.meetlove.domain.entity.FoodInfo.class)
+	@JoinColumn(name="FOODINFO_ID")
+	private IFoodInfo foodInfo;
+
+
+
+	/**
+	 * @return the id
 	 */
 	public long getId() {
-		// TODO Auto-generated method stub
-		return 0;
+		return id;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodResources#getName()
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+	/**
+	 * @return the name
 	 */
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodResources#setName(java.lang.String)
+	/**
+	 * @param name the name to set
 	 */
 	public void setName(String name) {
-		// TODO Auto-generated method stub
-
+		this.name = name;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodResources#getType()
+	/**
+	 * @return the type
 	 */
 	public FoodResourcesType getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return type;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodResources#setType(net.lw.meetlove.api.entity.FoodResourcesType)
+	/**
+	 * @param type the type to set
 	 */
 	public void setType(FoodResourcesType type) {
-		// TODO Auto-generated method stub
-
+		this.type = type;
 	}
+
+
+
+
 
 }

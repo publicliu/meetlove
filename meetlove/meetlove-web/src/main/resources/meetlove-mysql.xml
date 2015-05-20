@@ -67,6 +67,7 @@
 		<property name="packagesToScan">
 			<list>
 				<value>net.lw.ice.person.entity</value>
+				<value>net.lw.meetlove.domain.entity</value>
 			</list>
 		</property>
 	</bean>

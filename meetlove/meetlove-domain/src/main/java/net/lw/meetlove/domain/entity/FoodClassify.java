@@ -5,7 +5,21 @@
  */
 package net.lw.meetlove.domain.entity;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import net.lw.meetlove.api.entity.FoodStatus;
 import net.lw.meetlove.api.entity.IFoodClassify;
@@ -15,94 +29,119 @@ import net.lw.meetlove.api.entity.IFoodInfo;
  * @author liuwei
  *
  */
+@Entity
+@Table(name = "ML_FOODCLASSIFY" )
 public class FoodClassify implements IFoodClassify {
 
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodClassify#getId()
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO,generator="SEQ_ML_FOODCLASSIFY")
+	@SequenceGenerator(name="SEQ_ML_FOODCLASSIFY",sequenceName="SEQ_ML_FOODCLASSIFY")
+	@Column(name = "ID")
+	private long id;
+
+	@Column(name="NAME",nullable = false,length=40)
+	private String name;
+
+	@Column(name="REMARK",nullable = true)
+	private String remark;
+
+	@Column(name = "STATUS",nullable = false,length=1)
+	private FoodStatus status;
+
+	@Column(name = "SORT",nullable = false)
+	private int sort = 0;
+
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity=net.lw.meetlove.domain.entity.FoodClassify.class)
+	@JoinColumn(name="PARENT_ID")
+	private IFoodClassify parent;
+
+	@OneToMany(mappedBy="parent",targetEntity=net.lw.meetlove.domain.entity.FoodClassify.class)
+	private List<IFoodClassify> childrenClassifies = new ArrayList<IFoodClassify>();
+
+
+	@Transient
+	private List<IFoodInfo> childrenFoodInfos = new ArrayList<IFoodInfo>();
+	/**
+	 * @return the id
 	 */
 	public long getId() {
-		// TODO Auto-generated method stub
-		return 0;
+		return id;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodClassify#setName(java.lang.String)
+	/**
+	 * @param id the id to set
 	 */
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-
+	public void setId(long id) {
+		this.id = id;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodClassify#getName()
+	/**
+	 * @return the name
 	 */
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodClassify#setDesc(java.lang.String)
+	/**
+	 * @param name the name to set
 	 */
-	public void setDesc(String desc) {
-		// TODO Auto-generated method stub
-
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodClassify#getDesc()
+	/**
+	 * @return the desc
 	 */
-	public String getDesc() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getRemark() {
+		return remark;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodClassify#setStatus(net.lw.meetlove.api.entity.FoodStatus)
+	/**
+	 * @param desc the desc to set
 	 */
-	public void setStatus(FoodStatus foodStatus) {
-		// TODO Auto-generated method stub
-
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodClassify#getStatus()
+	/**
+	 * @return the foodStatus
 	 */
 	public FoodStatus getStatus() {
-		// TODO Auto-generated method stub
-		return null;
+		return status;
+	}
+	/**
+	 * @param foodStatus the foodStatus to set
+	 */
+	public void setStatus(FoodStatus foodStatus) {
+		this.status = foodStatus;
+	}
+	/**
+	 * @return the order
+	 */
+	public int getSort() {
+		return sort;
+	}
+	/**
+	 * @param order the order to set
+	 */
+	public void setSort(int sort) {
+		this.sort = sort;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodClassify#setOrder(int)
+	/**
+	 * @param parent the parent to set
 	 */
-	public void setOrder(int order) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see net.lw.meetlove.api.entity.IFoodClassify#getOrder()
-	 */
-	public int getOrder() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void setParent(IFoodClassify parent) {
+		this.parent = parent;
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.entity.IFoodClassify#listClassifyChildren()
 	 */
 	public List<IFoodClassify> listClassifyChildren() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.childrenClassifies;
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.entity.IFoodClassify#listFoodInfoChildren()
 	 */
 	public List<IFoodInfo> listFoodInfoChildren() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.childrenFoodInfos;
 	}
+
 
 }

@@ -10,17 +10,17 @@ public interface IFoodClassify {
 
 	public String getName();
 
-	public void setDesc(String desc);
+	public void setRemark(String remark);
 
-	public String getDesc();
+	public String getRemark();
 
 	public void setStatus(FoodStatus foodStatus);
 
 	public FoodStatus getStatus();
 
-	public void setOrder(int order);
+	public void setSort(int sort);
 
-	public int getOrder();
+	public int getSort();
 
 	public List<IFoodClassify> listClassifyChildren();
 
