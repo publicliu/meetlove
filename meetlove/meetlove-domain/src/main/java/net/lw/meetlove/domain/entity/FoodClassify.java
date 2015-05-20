@@ -3,7 +3,7 @@
  * publicliu@yeah.net
  * 2015年5月20日 下午9:15:37
  */
-package net.lw.meetlove.domain;
+package net.lw.meetlove.domain.entity;
 
 import java.util.List;
 
