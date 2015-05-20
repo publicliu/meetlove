@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>net.lw.meetlove</groupId>
+	<artifactId>meetlove-parent</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<name>meetlove-parent</name>
+	<url>http://maven.apache.org</url>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<ice-common.version>0.1-SNAPSHOT</ice-common.version>
+		<ice-api.version>0.1-SNAPSHOT</ice-api.version>
+		<ice-domain.version>0.1-SNAPSHOT</ice-domain.version>
+		<ice-person.version>0.1-SNAPSHOT</ice-person.version>
+		<meetlove-api.version>0.1-SNAPSHOT</meetlove-api.version>
+		<meetlove-domain.version>0.1-SNAPSHOT</meetlove-domain.version>
+		<jackson.version>2.2.2</jackson.version>
+	</properties>
+
+	<packaging>pom</packaging>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>net.lw.ice</groupId>
+				<artifactId>ice-common</artifactId>
+				<version>${ice-common.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.lw.ice</groupId>
+				<artifactId>ice-api</artifactId>
+				<version>${ice-api.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.lw.ice</groupId>
+				<artifactId>ice-domain</artifactId>
+				<version>${ice-domain.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.lw.ice</groupId>
+				<artifactId>ice-person</artifactId>
+				<version>${ice-person.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.lw.meetlove</groupId>
+				<artifactId>meetlove-api</artifactId>
+				<version>${meetlove-api.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.lw.meetlove</groupId>
+				<artifactId>meetlove-domain</artifactId>
+				<version>${meetlove-domain.version}</version>
+			</dependency>
+
+
+			<!-- json -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+
+			<!-- Servlet -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+				<version>1.1.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>3.8.1</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+</project>
