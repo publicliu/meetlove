@@ -20,5 +20,5 @@ public interface IFoodInfo {
 	public void setClassify(IFoodClassify classify);
 	public IFoodClassify getClassify();
 
-	public List<IFoodResources> listResources();
+	public List<IFoodResource> listResources();
 }

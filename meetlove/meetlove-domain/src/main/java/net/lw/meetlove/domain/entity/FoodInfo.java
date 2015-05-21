@@ -24,7 +24,7 @@ import javax.persistence.Table;
 import net.lw.meetlove.api.entity.FoodStatus;
 import net.lw.meetlove.api.entity.IFoodClassify;
 import net.lw.meetlove.api.entity.IFoodInfo;
-import net.lw.meetlove.api.entity.IFoodResources;
+import net.lw.meetlove.api.entity.IFoodResource;
 
 /**
  * @author liuwei
@@ -54,8 +54,8 @@ public class FoodInfo implements IFoodInfo {
 	private IFoodClassify classify;
 
 
-	@OneToMany(mappedBy="foodInfo",targetEntity=FoodResources.class)
-	private List<IFoodResources> resources = new ArrayList<IFoodResources>();
+	@OneToMany(mappedBy="foodInfo",targetEntity=FoodResource.class)
+	private List<IFoodResource> resources = new ArrayList<IFoodResource>();
 	/**
 	 * @return the id
 	 */
@@ -123,7 +123,7 @@ public class FoodInfo implements IFoodInfo {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.entity.IFoodInfo#listResources()
 	 */
-	public List<IFoodResources> listResources() {
+	public List<IFoodResource> listResources() {
 		return this.resources;
 	}
 

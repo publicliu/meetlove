@@ -11,9 +11,10 @@ import javax.annotation.Resource;
 
 import net.lw.ice.domain.dao.IGenericDao;
 import net.lw.meetlove.api.entity.IFoodInfo;
-import net.lw.meetlove.api.entity.IFoodResources;
+import net.lw.meetlove.api.entity.IFoodResource;
 import net.lw.meetlove.api.service.IFoodInfoService;
 import net.lw.meetlove.domain.entity.FoodInfo;
+import net.lw.meetlove.domain.entity.FoodResource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,10 +39,18 @@ public class FoodInfoService implements IFoodInfoService {
 	}
 
 	/* (non-Javadoc)
+	 * @see net.lw.meetlove.api.service.IFoodInfoService#makeResource()
+	 */
+	public IFoodResource makeResource() {
+		// TODO Auto-generated method stub
+		return new FoodResource();
+	}
+
+	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#get(long)
 	 */
 	public IFoodInfo get(long infoId) {
-		return dao.load(infoId, IFoodInfo.class);
+		return dao.load(infoId, FoodInfo.class);
 	}
 
 	/* (non-Javadoc)
@@ -75,7 +84,7 @@ public class FoodInfoService implements IFoodInfoService {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#listResources(long)
 	 */
-	public List<IFoodResources> listResources(long infoId) {
+	public List<IFoodResource> listResources(long infoId) {
 		IFoodInfo foodInfo = this.get(infoId);
 		return foodInfo.listResources();
 	}
@@ -83,7 +92,7 @@ public class FoodInfoService implements IFoodInfoService {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#addResources(long, net.lw.meetlove.api.entity.IFoodResources)
 	 */
-	public IFoodResources addResources(long infoId, IFoodResources resources) {
+	public IFoodResource addResource(long infoId, IFoodResource resources) {
 		IFoodInfo foodInfo = this.get(infoId);
 		resources.setFoodInfo(foodInfo);
 		return dao.save(resources);
@@ -92,15 +101,15 @@ public class FoodInfoService implements IFoodInfoService {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#removeResources(long, long)
 	 */
-	public void removeResources(long resourceId) {
-		dao.delete(resourceId, IFoodResources.class);
+	public void removeResource(long resourceId) {
+		dao.delete(resourceId, FoodResource.class);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#removeAllResources(long)
 	 */
 	public void removeAllResources(long infoId) {
-		String hql = "delete FoodResources r where r.foodInfo.id = :infoId";
+		String hql = "delete FoodResource r where r.foodInfo.id = :infoId";
 		dao.getHibernateSession().createQuery(hql)
 								.setLong("infoId", infoId)
 								.executeUpdate();

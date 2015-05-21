@@ -1,6 +1,6 @@
 package net.lw.meetlove.api.entity;
 
-public interface IFoodResources {
+public interface IFoodResource {
 
 	public long getId();
 
@@ -8,9 +8,9 @@ public interface IFoodResources {
 
 	public void setName(String name);
 
-	public FoodResourcesType getType();
+	public FoodResourceType getType();
 
-	public void setType(FoodResourcesType type);
+	public void setType(FoodResourceType type);
 
 	public void setFoodInfo(IFoodInfo foodInfo);
 	public IFoodInfo getFoodInfo();

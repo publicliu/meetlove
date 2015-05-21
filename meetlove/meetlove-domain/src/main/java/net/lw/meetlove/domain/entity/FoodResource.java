@@ -16,17 +16,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import net.lw.meetlove.api.entity.FoodResourcesType;
+import net.lw.meetlove.api.entity.FoodResourceType;
 import net.lw.meetlove.api.entity.IFoodInfo;
-import net.lw.meetlove.api.entity.IFoodResources;
+import net.lw.meetlove.api.entity.IFoodResource;
 
 /**
  * @author liuwei
  *
  */
 @Entity
-@Table(name="ML_FOODRESOURCES")
-public class FoodResources implements IFoodResources {
+@Table(name="ML_FOODRESOURCE")
+public class FoodResource implements IFoodResource {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "SEQ_ML_FOODRESOURCES")
@@ -38,7 +38,7 @@ public class FoodResources implements IFoodResources {
 	private String name;
 
 	@Column(name="type",nullable = false)
-	private FoodResourcesType type;
+	private FoodResourceType type;
 
 
 	@ManyToOne(fetch = FetchType.LAZY,targetEntity = net.lw.meetlove.domain.entity.FoodInfo.class)
@@ -74,13 +74,13 @@ public class FoodResources implements IFoodResources {
 	/**
 	 * @return the type
 	 */
-	public FoodResourcesType getType() {
+	public FoodResourceType getType() {
 		return type;
 	}
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(FoodResourcesType type) {
+	public void setType(FoodResourceType type) {
 		this.type = type;
 	}
 	/**

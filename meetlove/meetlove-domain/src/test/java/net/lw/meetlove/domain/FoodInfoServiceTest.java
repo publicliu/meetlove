@@ -7,9 +7,11 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import net.lw.ice.domain.test.BindSessionInTest;
+import net.lw.meetlove.api.entity.FoodResourceType;
 import net.lw.meetlove.api.entity.FoodStatus;
 import net.lw.meetlove.api.entity.IFoodClassify;
 import net.lw.meetlove.api.entity.IFoodInfo;
+import net.lw.meetlove.api.entity.IFoodResource;
 import net.lw.meetlove.api.service.IFoodClassifyService;
 import net.lw.meetlove.api.service.IFoodInfoService;
 
@@ -45,21 +47,59 @@ public class FoodInfoServiceTest extends BindSessionInTest {
 
 	@Test
 	public void testRemove(){
+		infoService.remove(1);
 	}
 
 	@Test
 	public void testUpdate(){
+		IFoodInfo info = infoService.get(2);
+		info.setName(info.getName()+"_update");
+		infoService.udpate(info);
 	}
 
 	@Test
 	public void testList(){
-		List<IFoodClassify> list = classifyService.list();
-		assertEquals(2, list.size());
+		List<IFoodInfo> infos = infoService.list();
+		logger.debug("****************************");
+		for(IFoodInfo info : infos){
+			logger.debug(info.getName());
+		}
+		logger.debug("****************************");
 	}
 
+	@Test
 	public void testGet(){
-		IFoodClassify classify = classifyService.get(10);
-		assertNull(classify);
+		IFoodInfo info = infoService.get(2);
+		logger.debug(info.getName());
+	}
+
+
+	@Test
+	public void testAddResource(){
+		IFoodResource resource = infoService.makeResource();
+		resource.setName("test");
+		resource.setType(FoodResourceType.IMAGE);
+		infoService.addResource(2, resource);
+	}
+
+	@Test
+	public void testListResources(){
+		List<IFoodResource> resources = infoService.listResources(2);
+		logger.debug("****************************");
+		for(IFoodResource resource : resources){
+			logger.debug(resource.getName());
+		}
+		logger.debug("****************************");
+	}
+
+	@Test
+	public void testRemoveResource(){
+		infoService.removeResource(1);
+	}
+
+	@Test
+	public void testRemoveAllResources(){
+		infoService.removeAllResources(2);
 	}
 
 }
