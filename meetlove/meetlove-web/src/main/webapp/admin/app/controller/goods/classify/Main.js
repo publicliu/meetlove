@@ -7,7 +7,13 @@ Ext.define('Eway.controller.goods.classify.Main', {
     	selector : 'goods_classify_main',
     	autoCreate : true,
     	xtype: 'goods_classify_main'
-    }],
+    },{
+		ref: 'grid',
+		selector: 'goods_classify_classifygrid'
+	},{
+		ref: 'addWin',
+		selector: 'goods_classify_add'
+	}],
 
     views : [
     	'goods.classify.Main'
@@ -15,25 +21,22 @@ Ext.define('Eway.controller.goods.classify.Main', {
 
     init : function(){
    		var me = this;
+   		me.control({
+   			'goods_classify_main button[action=query]' : {
+   				click : me.onQuery
+   			},
+   			'goods_classify_main button[action=add]' : {
+   				click : me.onAdd
+   			},
+   			'goods_classify_main button[action=remove]' : {
+   				click : me.onRemove
+   			},
+   			'goods_classify_main button[action=update]' : {
+   				click : me.onUpdate
+   			}
+   		});
     },
 
-    orgTreeAfterRender : function(comp){
-    	comp.getSelectionModel().select(0);
-    },
-
-    getOrgTree : function(){
-    	var view = this.getEwayView();
-    	var tree = view.down('org_orgtree');
-    	return tree;
-    },
-
-    orgTreeItemClick : function(view,record){
-    	var grid = this.getGrid();
-		var store = grid.getStore();
-		store.cleanUrlParam();
-		store.setBaseParam('orgCode',record.data.id);
-		grid.getStore().loadPage(1);
-    },
 
     onQuery : function(){
     	var tree = this.getOrgTree();
@@ -47,14 +50,8 @@ Ext.define('Eway.controller.goods.classify.Main', {
     },
 
     onAdd : function(){
-    	var addWin = Ext.create('Eway.view.user.Add');
-    	var tree = this.getOrgTree();
-		var treeRecord = tree.getSelectionModel().getLastSelected();
+    	var addWin = Ext.create('Eway.view.goods.classify.Add');
     	var form = addWin.down('form');
-    	form.getForm().setValues({
-    		orgName : treeRecord.data.text,
-    		orgCode : treeRecord.data.id
-    	});
     	addWin.down('button[action="confirm"]').on('click',this.onAddWinConfirm,this);
     	addWin.show();
     },
@@ -128,12 +125,12 @@ Ext.define('Eway.controller.goods.classify.Main', {
 		var ewayView = this.getEwayView();
 		var win = this.getAddWin();
 		data = win.down('form').getForm().getValues();
-		var record = Ext.ModelManager.create(data, 'Eway.model.user.User');
+		var record = Ext.ModelManager.create(data, 'Eway.model.goods.Classify');
 		if(win.down('form').getForm().isValid()){
 			record.save({
 				success : function(record,operation){
 					me.getGrid().getStore().load();
-					Ext.MessageBox.alert('提示','创建成功,新建账户'+data.code+'初始密码为: 888888');
+					Ext.MessageBox.alert('提示','新增分类信息成功');
 					win.close();
 			    },
 			    failure: function(record,operation){

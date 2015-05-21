@@ -10,14 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import net.lw.ice.common.IFilter;
 import net.lw.ice.common.IPageResult;
 import net.lw.ice.common.filter.Filter;
+import net.lw.meetlove.api.entity.FoodStatus;
 import net.lw.meetlove.api.entity.IFoodClassify;
 import net.lw.meetlove.api.service.IFoodClassifyService;
 import net.lw.meetlove.web.admin.goods.form.ClassifyForm;
+import net.lw.meetlove.web.person.form.OrgForm;
 import net.lw.meetlove.web.util.IceConstant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +50,30 @@ public class ClassifyController {
 		model.addAttribute(IceConstant.TOTAL, pageResult.getTotal());
 		model.addAttribute(IceConstant.DATA, ClassifyForm.toForms(pageResult.list()));
 		return model;
+	}
+
+	@ResponseBody
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelMap add(@RequestBody ClassifyForm form){
+		ModelMap result = new ModelMap();
+
+		IFoodClassify classify = classifyService.make();
+		classify.setName(form.getName());
+		classify.setRemark(form.getRemark());
+		classify.setStatus(FoodStatus.ON);
+
+		try {
+			classify = classifyService.add(classify);
+		} catch (Exception e) {
+			result.addAttribute(IceConstant.SUCCESS, false);
+			result.addAttribute(IceConstant.ERROR_MSG, "增加失败");
+			return result;
+		}
+
+		result.addAttribute(IceConstant.DATA, ClassifyForm.toForm(classify));
+		result.addAttribute(IceConstant.SUCCESS, true);
+		return result;
+
 	}
 
 }
