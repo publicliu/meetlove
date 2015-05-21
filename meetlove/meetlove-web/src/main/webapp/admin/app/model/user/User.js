@@ -6,7 +6,7 @@ Ext.define('Eway.model.user.User',{
 
 	proxy : {
 		type : 'rest',
-		url : 'api/user',
+		url : 'admin/api/user',
 
 		reader : {
 			type : 'json',

@@ -41,7 +41,7 @@ Ext.define("Eway.controller.Main",{
 	logout : function(){
 		Ext.Ajax.request({
 			method : 'POST',
-			url : 'api/logout',
+			url : 'admin/api/logout',
 			success : function(response) {
 				window.location.reload();
 			},

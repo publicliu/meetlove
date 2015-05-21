@@ -3,8 +3,8 @@ Ext.define('Eway.view.Header',{
 	extend : 'Ext.panel.Panel',
 	layout : 'fit',
 	html:'<div class="appHeader">' +
-			'<span style="position: absolute;left: 10px;font-size:30px;">ICE综合管理平台</span>' +
-			'<span><img src="resources/images/banner_bg.png"  width="100%"/></span>' +
+			'<span style="position: absolute;left: 10px;font-size:30px;">遇见爱管理平台</span>' +
+			'<span><img src="'+Ext.cxtPath+'/resources/admin/images/banner_bg.png"  width="100%"/></span>' +
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
 		 '</div>',
 	 bbar: [{
@@ -41,6 +41,14 @@ Ext.define('Eway.view.Header',{
      			action : 'app.weixin.meetlove.Args'
      		}]
      	}]
+     },{
+    	 text : '商品管理',
+    	 menu : [{
+    		 text : '类别管理',
+    		 action : 'goods.classify.Main'
+    	 },{
+    		 text : '商品管理'
+    	 }]
      },'->',{
      	text : ewayUser.getName(),
      	menu : [{

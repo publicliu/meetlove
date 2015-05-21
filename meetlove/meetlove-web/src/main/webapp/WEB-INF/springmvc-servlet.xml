@@ -22,7 +22,7 @@
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
-	<context:component-scan base-package="net.lw.meetlove.web.weixin">
+	<context:component-scan base-package="net.lw.meetlove.web">
 	</context:component-scan>
 
 	<!-- 默认视图 -->
