@@ -13,4 +13,5 @@
 
 	<!-- 数据库部分的实现扫描-->
 	<import resource="classpath:/net/lw/ice/person/person-scan-hibernate.xml" />
+	<import resource="classpath:/net/lw/meetlove/domain/meetlove-scan-hibernate.xml"/>
 </beans>

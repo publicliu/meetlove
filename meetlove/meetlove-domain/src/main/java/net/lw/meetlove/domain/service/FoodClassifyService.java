@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import net.lw.ice.common.IFilter;
+import net.lw.ice.common.IPageResult;
 import net.lw.ice.domain.dao.IGenericDao;
 import net.lw.meetlove.api.entity.IFoodClassify;
 import net.lw.meetlove.api.entity.IFoodInfo;
@@ -88,6 +90,13 @@ public class FoodClassifyService implements IFoodClassifyService {
 	public List<IFoodClassify> listChildrenClassifies(long classifyId) {
 		IFoodClassify classify = this.get(classifyId);
 		return classify.listClassifyChildren();
+	}
+
+	/* (non-Javadoc)
+	 * @see net.lw.meetlove.api.service.IFoodClassifyService#page(int, int, net.lw.ice.common.IFilter)
+	 */
+	public IPageResult<IFoodClassify> page(int offset, int limit, IFilter filter) {
+		return dao.page(offset, limit, filter, FoodClassify.class);
 	}
 
 }

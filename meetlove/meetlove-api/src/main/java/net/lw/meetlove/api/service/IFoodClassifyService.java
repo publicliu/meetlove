@@ -2,6 +2,10 @@ package net.lw.meetlove.api.service;
 
 import java.util.List;
 
+import com.sun.org.apache.xml.internal.security.Init;
+
+import net.lw.ice.common.IFilter;
+import net.lw.ice.common.IPageResult;
 import net.lw.meetlove.api.entity.IFoodClassify;
 import net.lw.meetlove.api.entity.IFoodInfo;
 
@@ -20,6 +24,8 @@ public interface IFoodClassifyService {
 	public void update(IFoodClassify foodClassify);
 
 	public List<IFoodClassify> list();
+
+	public IPageResult<IFoodClassify> page(int offset,int limit,IFilter filter);
 
 	public List<IFoodInfo> listFoodInfos(long classifyId);
 

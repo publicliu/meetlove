@@ -1,12 +1,12 @@
-Ext.define('Eway.model.user.User',{
+Ext.define('Eway.model.goods.Classify',{
 
 	extend : 'Ext.data.Model',
 	idProperty : 'id',
-	fields : ['id','code','name','mobile','phone','email'],
+	fields : ['id','name','remark','status'],
 
 	proxy : {
 		type : 'rest',
-		url : 'api/admin/user',
+		url : 'api/admin/goods/classify',
 
 		reader : {
 			type : 'json',

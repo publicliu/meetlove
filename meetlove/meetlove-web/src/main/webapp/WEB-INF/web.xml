@@ -16,7 +16,7 @@
 
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
-		<url-pattern>/admin/api/*</url-pattern>
+		<url-pattern>/api/admin/*</url-pattern>
 	</servlet-mapping>
 
 	<context-param>

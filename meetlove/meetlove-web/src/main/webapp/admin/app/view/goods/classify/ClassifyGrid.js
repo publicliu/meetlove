@@ -4,9 +4,8 @@ Ext.define('Eway.view.goods.classify.ClassifyGrid',{
 	alias : 'widget.goods_classify_classifygrid',
 
 	initComponent : function(){
-		var store = Ext.create('Eway.store.user.User');
-		store.setBaseParam('orgCode',ewayUser.getOrgCode());
-		store.loadPage(1);
+		var store = Ext.create('Eway.store.goods.Classify');
+		store.load();
 
 		Ext.apply(this,{
 			tbar : ['->',{
@@ -30,24 +29,20 @@ Ext.define('Eway.view.goods.classify.ClassifyGrid',{
 			columns : [{
 				xtype: 'rownumberer'
 			},{
-				header : '编号',
-				dataIndex : 'code',
-				flex : 1
+				header : 'ID',
+				dataIndex : 'id',
+				hidden : true
 			},{
-				header : '姓名',
+				header : '类别名称',
 				dataIndex : 'name',
 				flex : 1
 			},{
-				header : '电话',
-				dataIndex : 'mobile',
+				header : '类别描述',
+				dataIndex : 'remark',
 				flex : 1
 			},{
-				header : '固话',
-				dataIndex : 'phone',
-				flex : 1
-			},{
-				header : '电子邮箱',
-				dataIndex : 'email',
+				header : '类别状态',
+				dataIndex : 'status',
 				flex : 1
 			}],
 			dockedItems: [{

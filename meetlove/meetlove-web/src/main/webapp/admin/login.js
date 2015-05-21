@@ -22,7 +22,7 @@
 				return;
 			}
 			$.post(
-				'admin/api/login',
+				'api/admin/login',
 				 {
 					username : username,
 					password : password

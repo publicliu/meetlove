@@ -6,7 +6,7 @@ Ext.define('Eway.model.org.Org',{
 
 	proxy : {
 		type : 'rest',
-		url : 'admin/api/org',
+		url : 'api/admin/org',
 
 		reader : {
 			type : 'json',
