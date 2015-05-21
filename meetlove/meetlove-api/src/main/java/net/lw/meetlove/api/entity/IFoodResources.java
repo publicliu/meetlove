@@ -12,4 +12,8 @@ public interface IFoodResources {
 
 	public void setType(FoodResourcesType type);
 
+	public void setFoodInfo(IFoodInfo foodInfo);
+	public IFoodInfo getFoodInfo();
+
+
 }

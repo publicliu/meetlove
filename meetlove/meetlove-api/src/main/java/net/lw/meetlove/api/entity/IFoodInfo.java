@@ -17,5 +17,8 @@ public interface IFoodInfo {
 	public void setStatus(FoodStatus foodStatus);
 	public FoodStatus getStatus();
 
+	public void setClassify(IFoodClassify classify);
+	public IFoodClassify getClassify();
+
 	public List<IFoodResources> listResources();
 }

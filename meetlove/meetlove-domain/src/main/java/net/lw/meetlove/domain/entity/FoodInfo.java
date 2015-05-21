@@ -8,6 +8,7 @@ package net.lw.meetlove.domain.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +51,7 @@ public class FoodInfo implements IFoodInfo {
 
 	@ManyToOne(fetch = FetchType.LAZY,targetEntity= net.lw.meetlove.domain.entity.FoodClassify.class)
 	@JoinColumn(name="CLASSIFY_ID")
-	private IFoodClassify foodClassify;
+	private IFoodClassify classify;
 
 
 	@OneToMany(mappedBy="foodInfo",targetEntity=FoodResources.class)
@@ -96,6 +97,21 @@ public class FoodInfo implements IFoodInfo {
 	 */
 	public FoodStatus getStatus() {
 		return status;
+	}
+
+
+
+	/**
+	 * @return the classify
+	 */
+	public IFoodClassify getClassify() {
+		return classify;
+	}
+	/**
+	 * @param classify the classify to set
+	 */
+	public void setClassify(IFoodClassify classify) {
+		this.classify = classify;
 	}
 	/**
 	 * @param status the status to set

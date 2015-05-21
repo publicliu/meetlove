@@ -42,7 +42,7 @@ public class FoodResources implements IFoodResources {
 
 
 	@ManyToOne(fetch = FetchType.LAZY,targetEntity = net.lw.meetlove.domain.entity.FoodInfo.class)
-	@JoinColumn(name="FOODINFO_ID")
+	@JoinColumn(name="infoId")
 	private IFoodInfo foodInfo;
 
 
@@ -83,6 +83,20 @@ public class FoodResources implements IFoodResources {
 	public void setType(FoodResourcesType type) {
 		this.type = type;
 	}
+	/**
+	 * @return the foodInfo
+	 */
+	public IFoodInfo getFoodInfo() {
+		return foodInfo;
+	}
+	/**
+	 * @param foodInfo the foodInfo to set
+	 */
+	public void setFoodInfo(IFoodInfo foodInfo) {
+		this.foodInfo = foodInfo;
+	}
+
+
 
 
 

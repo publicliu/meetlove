@@ -7,6 +7,6 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<!--自动扫描类路径中@Component、 @Repository、@Service、 @Controller组件-->
-	<context:component-scan base-package="net.lw.ice.person.service.db">
+	<context:component-scan base-package="net.lw.meetlove.domain.service">
 	</context:component-scan>
 </beans>

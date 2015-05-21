@@ -21,6 +21,7 @@
 
 	<!-- hibernate实现的service扫描 -->
 	<import resource="classpath:/net/lw/ice/person/person-scan-hibernate.xml"/>
+	<import resource="classpath:/net/lw/meetlove/domain/meetlove-scan-hibernate.xml"/>
 
 	<!--事务、拦截器和基础Dao的配置 -->
 	<import resource="classpath:/net/lw/ice/domain/ice-domain.xml" />

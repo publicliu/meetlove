@@ -59,7 +59,7 @@ public class FoodClassify implements IFoodClassify {
 	private List<IFoodClassify> childrenClassifies = new ArrayList<IFoodClassify>();
 
 
-	@Transient
+	@OneToMany(mappedBy="classify",targetEntity=FoodInfo.class)
 	private List<IFoodInfo> childrenFoodInfos = new ArrayList<IFoodInfo>();
 	/**
 	 * @return the id
