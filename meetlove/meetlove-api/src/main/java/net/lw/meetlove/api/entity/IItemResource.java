@@ -12,8 +12,8 @@ public interface IItemResource {
 
 	public void setType(ItemResourceType type);
 
-	public void setFoodInfo(IGoodsItem foodInfo);
-	public IGoodsItem getFoodInfo();
+	public void setGoodsItem(IGoodsItem goodsItem);
+	public IGoodsItem getGoodsItem();
 
 
 }

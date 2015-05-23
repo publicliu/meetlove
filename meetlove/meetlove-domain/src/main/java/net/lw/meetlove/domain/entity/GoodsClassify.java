@@ -19,7 +19,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import net.lw.meetlove.api.entity.GoodsStatus;
 import net.lw.meetlove.api.entity.IGoodsClassify;
@@ -30,12 +29,12 @@ import net.lw.meetlove.api.entity.IGoodsItem;
  *
  */
 @Entity
-@Table(name = "ML_FOODCLASSIFY" )
+@Table(name = "ML_GOODSCLASSIFY" )
 public class GoodsClassify implements IGoodsClassify {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO,generator="SEQ_ML_FOODCLASSIFY")
-	@SequenceGenerator(name="SEQ_ML_FOODCLASSIFY",sequenceName="SEQ_ML_FOODCLASSIFY")
+	@GeneratedValue(strategy = GenerationType.AUTO,generator="SEQ_ML_GOODSCLASSIFY")
+	@SequenceGenerator(name="SEQ_ML_GOODSCLASSIFY",sequenceName="SEQ_ML_GOODSCLASSIFY")
 	@Column(name = "ID")
 	private long id;
 
@@ -60,7 +59,7 @@ public class GoodsClassify implements IGoodsClassify {
 
 
 	@OneToMany(mappedBy="classify",targetEntity=GoodsItem.class)
-	private List<IGoodsItem> childrenFoodInfos = new ArrayList<IGoodsItem>();
+	private List<IGoodsItem> childrenGoodsItems = new ArrayList<IGoodsItem>();
 	/**
 	 * @return the id
 	 */
@@ -98,16 +97,16 @@ public class GoodsClassify implements IGoodsClassify {
 		this.remark = remark;
 	}
 	/**
-	 * @return the foodStatus
+	 * @return the Status
 	 */
 	public GoodsStatus getStatus() {
 		return status;
 	}
 	/**
-	 * @param foodStatus the foodStatus to set
+	 * @param foodStatus the Status to set
 	 */
-	public void setStatus(GoodsStatus foodStatus) {
-		this.status = foodStatus;
+	public void setStatus(GoodsStatus goodsStatus) {
+		this.status = goodsStatus;
 	}
 	/**
 	 * @return the order
@@ -139,8 +138,8 @@ public class GoodsClassify implements IGoodsClassify {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.entity.IFoodClassify#listFoodInfoChildren()
 	 */
-	public List<IGoodsItem> listFoodInfoChildren() {
-		return this.childrenFoodInfos;
+	public List<IGoodsItem> listGoodsItemChildren() {
+		return this.childrenGoodsItems;
 	}
 
 

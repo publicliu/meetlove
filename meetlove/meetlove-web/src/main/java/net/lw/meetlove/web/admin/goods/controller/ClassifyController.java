@@ -112,7 +112,7 @@ public class ClassifyController {
 			return result;
 		}
 
-		if(classify.listFoodInfoChildren().size() > 0){
+		if(classify.listGoodsItemChildren().size() > 0){
 			result.addAttribute(IceConstant.SUCCESS, false);
 			result.addAttribute(IceConstant.ERROR_MSG, "删除失败【本分类信息下还有其他商品】");
 			return result;

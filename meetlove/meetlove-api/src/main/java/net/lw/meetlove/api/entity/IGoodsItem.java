@@ -14,7 +14,7 @@ public interface IGoodsItem {
 
 	public void setRemark(String remark);
 
-	public void setStatus(GoodsStatus foodStatus);
+	public void setStatus(GoodsStatus goodsStatus);
 	public GoodsStatus getStatus();
 
 	public void setClassify(IGoodsClassify classify);

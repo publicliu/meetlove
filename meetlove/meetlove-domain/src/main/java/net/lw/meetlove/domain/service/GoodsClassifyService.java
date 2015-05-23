@@ -40,8 +40,8 @@ public class GoodsClassifyService implements IGoodsClassifyService {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#add(net.lw.meetlove.api.entity.IFoodClassify)
 	 */
-	public IGoodsClassify add(IGoodsClassify foodClassify) {
-		return dao.save(foodClassify);
+	public IGoodsClassify add(IGoodsClassify classify) {
+		return dao.save(classify);
 	}
 
 	/* (non-Javadoc)
@@ -58,15 +58,15 @@ public class GoodsClassifyService implements IGoodsClassifyService {
 		dao.delete(id, GoodsClassify.class);
 	}
 
-	public void remove(IGoodsClassify foodClassify){
-		dao.delete(foodClassify);
+	public void remove(IGoodsClassify classify){
+		dao.delete(classify);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#update(net.lw.meetlove.api.entity.IFoodClassify)
 	 */
-	public void update(IGoodsClassify foodClassify) {
-		dao.update(foodClassify);
+	public void update(IGoodsClassify classify) {
+		dao.update(classify);
 	}
 
 	/* (non-Javadoc)
@@ -79,9 +79,9 @@ public class GoodsClassifyService implements IGoodsClassifyService {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#listFoodInfos(long)
 	 */
-	public List<IGoodsItem> listFoodInfos(long classifyId) {
+	public List<IGoodsItem> listGoodsItems(long classifyId) {
 		IGoodsClassify classify = this.get(classifyId);
-		return classify.listFoodInfoChildren();
+		return classify.listGoodsItemChildren();
 	}
 
 	/* (non-Javadoc)
@@ -103,7 +103,7 @@ public class GoodsClassifyService implements IGoodsClassifyService {
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#listFirstChildrenClassifies()
 	 */
 	public List<IGoodsClassify> listFirstChildrenClassifies() {
-		String hql = "from FoodClassify f where f.parent.id is null";
+		String hql = "from GoodsClassify f where f.parent.id is null";
 		return dao.findByHQL(hql);
 	}
 

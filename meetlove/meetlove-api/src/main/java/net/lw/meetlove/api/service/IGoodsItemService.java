@@ -11,22 +11,22 @@ public interface IGoodsItemService {
 
 	public IItemResource makeResource();
 
-	public IGoodsItem get(long infoId);
+	public IGoodsItem get(long itemId);
 
-	public IGoodsItem add(IGoodsItem foodInfo);
+	public IGoodsItem add(IGoodsItem goodsItem);
 
 	public void remove(long id);
 
-	public void udpate(IGoodsItem foodInfo);
+	public void udpate(IGoodsItem goodsItem);
 
 	public List<IGoodsItem> list();
 
-	public List<IItemResource> listResources(long infoId);
+	public List<IItemResource> listResources(long itemId);
 
-	public IItemResource addResource(long infoId,IItemResource resource);
+	public IItemResource addResource(long itemId,IItemResource resource);
 
 	public void removeResource(long resourceId);
 
-	public void removeAllResources(long infoId);
+	public void removeAllResources(long itemId);
 
 }

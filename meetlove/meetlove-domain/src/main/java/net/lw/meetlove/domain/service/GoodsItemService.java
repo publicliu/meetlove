@@ -56,8 +56,8 @@ public class GoodsItemService implements IGoodsItemService {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#add(net.lw.meetlove.api.entity.IFoodInfo)
 	 */
-	public IGoodsItem add(IGoodsItem foodInfo) {
-		return dao.save(foodInfo);
+	public IGoodsItem add(IGoodsItem goodsItem) {
+		return dao.save(goodsItem);
 	}
 
 	/* (non-Javadoc)
@@ -70,8 +70,8 @@ public class GoodsItemService implements IGoodsItemService {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#udpate(net.lw.meetlove.api.entity.IFoodInfo)
 	 */
-	public void udpate(IGoodsItem foodInfo) {
-		dao.update(foodInfo);
+	public void udpate(IGoodsItem goodsItem) {
+		dao.update(goodsItem);
 	}
 
 	/* (non-Javadoc)
@@ -85,16 +85,16 @@ public class GoodsItemService implements IGoodsItemService {
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#listResources(long)
 	 */
 	public List<IItemResource> listResources(long infoId) {
-		IGoodsItem foodInfo = this.get(infoId);
-		return foodInfo.listResources();
+		IGoodsItem goodsItem = this.get(infoId);
+		return goodsItem.listResources();
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#addResources(long, net.lw.meetlove.api.entity.IFoodResources)
 	 */
-	public IItemResource addResource(long infoId, IItemResource resources) {
-		IGoodsItem foodInfo = this.get(infoId);
-		resources.setFoodInfo(foodInfo);
+	public IItemResource addResource(long itemId, IItemResource resources) {
+		IGoodsItem goodsItem = this.get(itemId);
+		resources.setGoodsItem(goodsItem);
 		return dao.save(resources);
 	}
 
@@ -108,10 +108,10 @@ public class GoodsItemService implements IGoodsItemService {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#removeAllResources(long)
 	 */
-	public void removeAllResources(long infoId) {
-		String hql = "delete FoodResource r where r.foodInfo.id = :infoId";
+	public void removeAllResources(long itemId) {
+		String hql = "delete ItemResource r where r.goodsItem.id = :itemId";
 		dao.getHibernateSession().createQuery(hql)
-								.setLong("infoId", infoId)
+								.setLong("itemId", itemId)
 								.executeUpdate();
 
 	}

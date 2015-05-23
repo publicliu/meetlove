@@ -69,7 +69,7 @@ public class GoodsClassifyServiceTest extends BindSessionInTest {
 
 	@Test
 	public void testListFoodInfos(){
-		List<IGoodsItem> infos = classifyService.listFoodInfos(4);
+		List<IGoodsItem> infos = classifyService.listGoodsItems(4);
 		logger.info("******************************************");
 		for(IGoodsItem info : infos){
 			logger.info(info.getName());

@@ -25,12 +25,12 @@ import net.lw.meetlove.api.entity.IItemResource;
  *
  */
 @Entity
-@Table(name="ML_FOODRESOURCE")
+@Table(name="ML_ITEMRESOURCE")
 public class ItemResource implements IItemResource {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO,generator = "SEQ_ML_FOODRESOURCES")
-	@SequenceGenerator(name="SEQ_ML_FOODRESOURCES",sequenceName="SEQ_ML_FOODRESOURCES")
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "SEQ_ML_ITEMRESOURCES")
+	@SequenceGenerator(name="SEQ_ML_ITEMRESOURCES",sequenceName="SEQ_ML_ITEMRESOURCES")
 	@Column(name="ID")
 	private long id;
 
@@ -42,8 +42,8 @@ public class ItemResource implements IItemResource {
 
 
 	@ManyToOne(fetch = FetchType.LAZY,targetEntity = net.lw.meetlove.domain.entity.GoodsItem.class)
-	@JoinColumn(name="infoId")
-	private IGoodsItem foodInfo;
+	@JoinColumn(name="itemId")
+	private IGoodsItem goodsItem;
 
 
 
@@ -84,16 +84,16 @@ public class ItemResource implements IItemResource {
 		this.type = type;
 	}
 	/**
-	 * @return the foodInfo
+	 * @return the goodsItem
 	 */
-	public IGoodsItem getFoodInfo() {
-		return foodInfo;
+	public IGoodsItem getGoodsItem() {
+		return goodsItem;
 	}
 	/**
-	 * @param foodInfo the foodInfo to set
+	 * @param goodsItem the goodsItem to set
 	 */
-	public void setFoodInfo(IGoodsItem foodInfo) {
-		this.foodInfo = foodInfo;
+	public void setGoodsItem(IGoodsItem goodsItem) {
+		this.goodsItem = goodsItem;
 	}
 
 

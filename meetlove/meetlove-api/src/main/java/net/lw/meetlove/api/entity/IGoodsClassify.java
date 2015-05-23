@@ -14,7 +14,7 @@ public interface IGoodsClassify {
 
 	public String getRemark();
 
-	public void setStatus(GoodsStatus foodStatus);
+	public void setStatus(GoodsStatus goodsStatus);
 
 	public GoodsStatus getStatus();
 
@@ -24,6 +24,6 @@ public interface IGoodsClassify {
 
 	public List<IGoodsClassify> listClassifyChildren();
 
-	public List<IGoodsItem> listFoodInfoChildren();
+	public List<IGoodsItem> listGoodsItemChildren();
 
 }

@@ -31,12 +31,12 @@ import net.lw.meetlove.api.entity.IItemResource;
  *
  */
 @Entity
-@Table(name = "ML_FOODINFO")
+@Table(name = "ML_GOODSITEM")
 public class GoodsItem implements IGoodsItem {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO,generator = "SEQ_ML_FOODINFO")
-	@SequenceGenerator(name="SEQ_ML_FOODINFO",sequenceName="SEQ_ML_FOODINFO")
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "SEQ_ML_GOODSITEM")
+	@SequenceGenerator(name="SEQ_ML_GOODSITEM",sequenceName="SEQ_ML_GOODSITEM")
 	@Column(name="ID")
 	private long id;
 
@@ -54,7 +54,7 @@ public class GoodsItem implements IGoodsItem {
 	private IGoodsClassify classify;
 
 
-	@OneToMany(mappedBy="foodInfo",targetEntity=ItemResource.class)
+	@OneToMany(mappedBy="goodsItem",targetEntity=ItemResource.class)
 	private List<IItemResource> resources = new ArrayList<IItemResource>();
 	/**
 	 * @return the id
