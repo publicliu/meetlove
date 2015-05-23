@@ -110,6 +110,7 @@ Ext.define('Eway.controller.goods.classify.Main', {
 	    		orgName : treeRecord.data.text,
 	    		orgCode : treeRecord.data.id
 	    	});*/
+			this.updateWin = win;
 	    	win.down('button[action="confirm"]').on('click',this.onUpdateWinConfirm,this);
 			win.show();
 		}else {
@@ -152,7 +153,7 @@ Ext.define('Eway.controller.goods.classify.Main', {
 
 	onUpdateWinConfirm: function() {
 		var me = this;
-		var win = this.getUpdateWin();
+		var win = me.updateWin;
 		var updateForm = win.down('form');
 		var store = this.getGrid().getStore();
 		var form = updateForm.getForm();

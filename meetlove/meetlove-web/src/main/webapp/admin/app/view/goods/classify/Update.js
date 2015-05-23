@@ -24,9 +24,13 @@ Ext.define('Eway.view.goods.classify.Update', {
 				},
 				items: [{
 					xtype : 'textfield',
-					fieldLabel : '分类名称',
-					name : 'name',
+					fieldLabel : 'ID',
+					name : 'id',
 					readOnly : true
+				},{
+					xtype : 'textfield',
+					fieldLabel : '分类名称',
+					name : 'name'
 				},{
 					xtype : 'textfield',
 					fieldLabel : '分类描述',
