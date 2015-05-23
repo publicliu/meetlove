@@ -29,7 +29,7 @@ import net.lw.meetlove.api.entity.IGoodsItem;
  *
  */
 @Entity
-@Table(name = "ML_GOODSCLASSIFY" )
+@Table(name = "ML_GOODS_CLASSIFY" )
 public class GoodsClassify implements IGoodsClassify {
 
 	@Id

@@ -42,6 +42,12 @@ Ext.define('Eway.view.Header',{
      		}]
      	}]
      },{
+     	text : '系统管理',
+     	menu : [{
+     		text : '参数配置',
+     		action : 'system.Args'
+     	}]
+     },{
     	 text : '商品管理',
     	 menu : [{
     		 text : '类别管理',

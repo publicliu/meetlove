@@ -25,7 +25,7 @@ import net.lw.meetlove.api.entity.IItemResource;
  *
  */
 @Entity
-@Table(name="ML_ITEMRESOURCE")
+@Table(name="ML_ITEM_RESOURCE")
 public class ItemResource implements IItemResource {
 
 	@Id
@@ -37,7 +37,7 @@ public class ItemResource implements IItemResource {
 	@Column(name="NAME",nullable = false)
 	private String name;
 
-	@Column(name="type",nullable = false)
+	@Column(name="TYPE",nullable = false)
 	private ItemResourceType type;
 
 

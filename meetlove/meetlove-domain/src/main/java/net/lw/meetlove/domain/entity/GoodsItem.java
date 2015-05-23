@@ -31,7 +31,7 @@ import net.lw.meetlove.api.entity.IItemResource;
  *
  */
 @Entity
-@Table(name = "ML_GOODSITEM")
+@Table(name = "ML_GOODS_ITEM")
 public class GoodsItem implements IGoodsItem {
 
 	@Id
