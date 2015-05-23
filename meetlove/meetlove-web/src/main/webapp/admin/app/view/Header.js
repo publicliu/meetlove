@@ -47,7 +47,8 @@ Ext.define('Eway.view.Header',{
     		 text : '类别管理',
     		 action : 'goods.classify.Main'
     	 },{
-    		 text : '商品管理'
+    		 text : '商品管理',
+    		 action : 'goods.item.Main'
     	 }]
      },'->',{
      	text : ewayUser.getName(),

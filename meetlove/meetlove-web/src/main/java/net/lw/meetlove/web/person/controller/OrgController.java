@@ -28,7 +28,7 @@ import org.springframework.web.context.request.WebRequest;
 
 
 @Controller
-@RequestMapping("/org")
+@RequestMapping("/admin/org")
 public class OrgController {
 
 	@Autowired

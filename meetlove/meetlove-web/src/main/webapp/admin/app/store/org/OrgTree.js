@@ -14,7 +14,7 @@ Ext.define('Eway.store.org.OrgTree', {
 
     proxy: {
         type: 'ajax',
-        url : 'admin/api/org/orgTree',
+        url : 'api/admin/org/orgTree',
 	    reader: {
 	        type: 'json',
 	        root: 'data'

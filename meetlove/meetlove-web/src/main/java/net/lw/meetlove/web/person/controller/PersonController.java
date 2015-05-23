@@ -24,7 +24,7 @@ import org.springframework.web.context.request.WebRequest;
 
 
 @Controller
-@RequestMapping("/person")
+@RequestMapping("/admin/person")
 public class PersonController {
 
 

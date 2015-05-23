@@ -99,4 +99,12 @@ public class FoodClassifyService implements IFoodClassifyService {
 		return dao.page(offset, limit, filter, FoodClassify.class);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.lw.meetlove.api.service.IFoodClassifyService#listFirstChildrenClassifies()
+	 */
+	public List<IFoodClassify> listFirstChildrenClassifies() {
+		String hql = "from FoodClassify f where f.parent.id is null";
+		return dao.findByHQL(hql);
+	}
+
 }

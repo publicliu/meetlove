@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/admin/login")
 public class LoginController {
 
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(LoginController.class);

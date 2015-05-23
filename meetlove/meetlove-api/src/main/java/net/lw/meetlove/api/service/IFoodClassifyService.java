@@ -31,4 +31,6 @@ public interface IFoodClassifyService {
 
 	public List<IFoodClassify> listChildrenClassifies(long classifyId);
 
+	public List<IFoodClassify> listFirstChildrenClassifies();
+
 }

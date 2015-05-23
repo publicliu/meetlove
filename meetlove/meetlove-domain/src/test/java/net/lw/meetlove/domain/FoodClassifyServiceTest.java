@@ -77,4 +77,14 @@ public class FoodClassifyServiceTest extends BindSessionInTest {
 		logger.info("******************************************");
 	}
 
+	@Test
+	public void testListFirstChildrenClassifies(){
+		List<IFoodClassify> classifies = classifyService.listFirstChildrenClassifies();
+		logger.info("******************************************");
+		for(IFoodClassify classify : classifies){
+			logger.info(classify.getName());
+		}
+		logger.info("******************************************");
+	}
+
 }

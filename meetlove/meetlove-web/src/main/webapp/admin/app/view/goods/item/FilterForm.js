@@ -1,6 +1,6 @@
-Ext.define('Eway.view.goods.classify.FilterForm',{
+Ext.define('Eway.view.goods.item.FilterForm',{
 
-	alias : 'widget.goods_classify_filterform',
+	alias : 'widget.goods_item_filterform',
 	extend : 'Eway.view.base.FilterForm',
 
 

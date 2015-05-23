@@ -5,23 +5,22 @@
  */
 package net.lw.meetlove.web.admin.goods.controller;
 
-import java.text.Normalizer.Form;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import net.lw.ice.common.IFilter;
 import net.lw.ice.common.IPageResult;
 import net.lw.ice.common.filter.Filter;
-import net.lw.meetlove.api.entity.FoodStatus;
 import net.lw.meetlove.api.entity.IFoodClassify;
 import net.lw.meetlove.api.service.IFoodClassifyService;
 import net.lw.meetlove.web.admin.goods.form.ClassifyForm;
-import net.lw.meetlove.web.person.form.OrgForm;
+import net.lw.meetlove.web.admin.goods.form.ClassifyTreeForm;
 import net.lw.meetlove.web.util.IceConstant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,7 +35,7 @@ import org.springframework.web.context.request.WebRequest;
  *
  */
 @Controller
-@RequestMapping("/goods/classify")
+@RequestMapping("/admin/goods/classify")
 public class ClassifyController {
 
 	@Autowired
@@ -129,5 +128,21 @@ public class ClassifyController {
 		}
 
 		return result;
+	}
+
+	@ResponseBody
+	@RequestMapping(value="/tree",method=RequestMethod.GET)
+	public ModelMap getOrgTree(@RequestParam long node){
+		ModelMap model = new ModelMap();
+		List<IFoodClassify> classifies = new ArrayList<IFoodClassify>();
+		if(node == -1){
+			classifies = classifyService.listFirstChildrenClassifies();
+		}
+		else {
+			classifies = classifyService.listChildrenClassifies(node);
+		}
+		model.addAttribute("success", true);
+		model.addAttribute("data", ClassifyTreeForm.toForms(classifies));
+		return model;
 	}
 }

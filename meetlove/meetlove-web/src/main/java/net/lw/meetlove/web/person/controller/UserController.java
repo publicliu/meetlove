@@ -26,7 +26,7 @@ import org.springframework.web.context.request.WebRequest;
 
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/admin/user")
 public class UserController {
 
 
