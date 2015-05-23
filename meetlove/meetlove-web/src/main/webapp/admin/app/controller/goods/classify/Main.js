@@ -81,7 +81,7 @@ Ext.define('Eway.controller.goods.classify.Main', {
 						var response = Ext.JSON.decode(operation.response.responseText);
 						if(response.success){
 							Ext.Msg.alert("提示", "删除成功");
-							me.onQuery();
+//							me.onQuery();
 						}
 						else {
 							store.rejectChanges();

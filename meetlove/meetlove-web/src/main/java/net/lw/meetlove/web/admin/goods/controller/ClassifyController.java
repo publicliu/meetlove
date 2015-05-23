@@ -100,4 +100,34 @@ public class ClassifyController {
 		result.addAttribute(IceConstant.ERROR_MSG, "修改成功");
 		return result;
 	}
+
+	@ResponseBody
+	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
+	public ModelMap delete(@PathVariable long id){
+		ModelMap result = new ModelMap();
+		IFoodClassify classify = classifyService.get(id);
+
+		if(classify.listClassifyChildren().size() > 0 ){
+			result.addAttribute(IceConstant.SUCCESS, false);
+			result.addAttribute(IceConstant.ERROR_MSG, "删除失败【本分类信息下还有其他分类】");
+			return result;
+		}
+
+		if(classify.listFoodInfoChildren().size() > 0){
+			result.addAttribute(IceConstant.SUCCESS, false);
+			result.addAttribute(IceConstant.ERROR_MSG, "删除失败【本分类信息下还有其他商品】");
+			return result;
+		}
+
+		try {
+			classifyService.remove(id);
+			result.addAttribute(IceConstant.SUCCESS, true);
+			result.addAttribute(IceConstant.ERROR_MSG, "删除成功");
+		} catch (Exception e) {
+			result.addAttribute(IceConstant.SUCCESS, false);
+			result.addAttribute(IceConstant.ERROR_MSG, "删除失败");
+		}
+
+		return result;
+	}
 }
