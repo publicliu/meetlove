@@ -8,8 +8,8 @@ package net.lw.meetlove.web.admin.goods.form;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.lw.meetlove.api.entity.FoodStatus;
-import net.lw.meetlove.api.entity.IFoodClassify;
+import net.lw.meetlove.api.entity.GoodsStatus;
+import net.lw.meetlove.api.entity.IGoodsClassify;
 
 
 /**
@@ -21,7 +21,7 @@ public class ClassifyForm {
 	private long id;
 	private String name;
 	private String remark;
-	private FoodStatus status;
+	private GoodsStatus status;
 
 
 	public ClassifyForm() {}
@@ -33,14 +33,14 @@ public class ClassifyForm {
 	 * @param remark
 	 * @param status
 	 */
-	public ClassifyForm(long id, String name, String remark, FoodStatus status) {
+	public ClassifyForm(long id, String name, String remark, GoodsStatus status) {
 		this.id = id;
 		this.name = name;
 		this.remark = remark;
 		this.status = status;
 	}
 
-	public static ClassifyForm toForm(IFoodClassify classify){
+	public static ClassifyForm toForm(IGoodsClassify classify){
 		return new ClassifyForm(
 				classify.getId(),
 				classify.getName(),
@@ -48,9 +48,9 @@ public class ClassifyForm {
 				classify.getStatus());
 	}
 
-	public static List<ClassifyForm> toForms(List<IFoodClassify> classifies){
+	public static List<ClassifyForm> toForms(List<IGoodsClassify> classifies){
 		List<ClassifyForm> result = new ArrayList<ClassifyForm>();
-		for(IFoodClassify classify : classifies){
+		for(IGoodsClassify classify : classifies){
 			result.add(toForm(classify));
 		}
 		return result;
@@ -108,7 +108,7 @@ public class ClassifyForm {
 	/**
 	 * @return the status
 	 */
-	public FoodStatus getStatus() {
+	public GoodsStatus getStatus() {
 		return status;
 	}
 
@@ -116,7 +116,7 @@ public class ClassifyForm {
 	/**
 	 * @param status the status to set
 	 */
-	public void setStatus(FoodStatus status) {
+	public void setStatus(GoodsStatus status) {
 		this.status = status;
 	}
 

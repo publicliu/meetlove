@@ -1,19 +1,19 @@
 package net.lw.meetlove.api.entity;
 
-public enum FoodResourceType {
+public enum ItemResourceType {
 
 	IMAGE(1, "图片"), VOICE(2, "语音"), VIDEO(3, "视频"), MUSIC(4, "音乐");
 
 	private int id;
 	private String text;
 
-	private FoodResourceType(int id, String text) {
+	private ItemResourceType(int id, String text) {
 		this.id = id;
 		this.text = text;
 	}
 
-	public static FoodResourceType getById(int id) {
-		for (FoodResourceType type : FoodResourceType.values()) {
+	public static ItemResourceType getById(int id) {
+		for (ItemResourceType type : ItemResourceType.values()) {
 			if (type.getId() == id) {
 				return type;
 			}

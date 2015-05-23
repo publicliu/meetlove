@@ -16,9 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import net.lw.meetlove.api.entity.FoodResourceType;
-import net.lw.meetlove.api.entity.IFoodInfo;
-import net.lw.meetlove.api.entity.IFoodResource;
+import net.lw.meetlove.api.entity.ItemResourceType;
+import net.lw.meetlove.api.entity.IGoodsItem;
+import net.lw.meetlove.api.entity.IItemResource;
 
 /**
  * @author liuwei
@@ -26,7 +26,7 @@ import net.lw.meetlove.api.entity.IFoodResource;
  */
 @Entity
 @Table(name="ML_FOODRESOURCE")
-public class FoodResource implements IFoodResource {
+public class ItemResource implements IItemResource {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "SEQ_ML_FOODRESOURCES")
@@ -38,12 +38,12 @@ public class FoodResource implements IFoodResource {
 	private String name;
 
 	@Column(name="type",nullable = false)
-	private FoodResourceType type;
+	private ItemResourceType type;
 
 
-	@ManyToOne(fetch = FetchType.LAZY,targetEntity = net.lw.meetlove.domain.entity.FoodInfo.class)
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity = net.lw.meetlove.domain.entity.GoodsItem.class)
 	@JoinColumn(name="infoId")
-	private IFoodInfo foodInfo;
+	private IGoodsItem foodInfo;
 
 
 
@@ -74,25 +74,25 @@ public class FoodResource implements IFoodResource {
 	/**
 	 * @return the type
 	 */
-	public FoodResourceType getType() {
+	public ItemResourceType getType() {
 		return type;
 	}
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(FoodResourceType type) {
+	public void setType(ItemResourceType type) {
 		this.type = type;
 	}
 	/**
 	 * @return the foodInfo
 	 */
-	public IFoodInfo getFoodInfo() {
+	public IGoodsItem getFoodInfo() {
 		return foodInfo;
 	}
 	/**
 	 * @param foodInfo the foodInfo to set
 	 */
-	public void setFoodInfo(IFoodInfo foodInfo) {
+	public void setFoodInfo(IGoodsItem foodInfo) {
 		this.foodInfo = foodInfo;
 	}
 

@@ -21,10 +21,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import net.lw.meetlove.api.entity.FoodStatus;
-import net.lw.meetlove.api.entity.IFoodClassify;
-import net.lw.meetlove.api.entity.IFoodInfo;
-import net.lw.meetlove.api.entity.IFoodResource;
+import net.lw.meetlove.api.entity.GoodsStatus;
+import net.lw.meetlove.api.entity.IGoodsClassify;
+import net.lw.meetlove.api.entity.IGoodsItem;
+import net.lw.meetlove.api.entity.IItemResource;
 
 /**
  * @author liuwei
@@ -32,7 +32,7 @@ import net.lw.meetlove.api.entity.IFoodResource;
  */
 @Entity
 @Table(name = "ML_FOODINFO")
-public class FoodInfo implements IFoodInfo {
+public class GoodsItem implements IGoodsItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "SEQ_ML_FOODINFO")
@@ -47,15 +47,15 @@ public class FoodInfo implements IFoodInfo {
 	private String remark;
 
 	@Column(name = "STATUS")
-	private FoodStatus status;
+	private GoodsStatus status;
 
-	@ManyToOne(fetch = FetchType.LAZY,targetEntity= net.lw.meetlove.domain.entity.FoodClassify.class)
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity= net.lw.meetlove.domain.entity.GoodsClassify.class)
 	@JoinColumn(name="CLASSIFY_ID")
-	private IFoodClassify classify;
+	private IGoodsClassify classify;
 
 
-	@OneToMany(mappedBy="foodInfo",targetEntity=FoodResource.class)
-	private List<IFoodResource> resources = new ArrayList<IFoodResource>();
+	@OneToMany(mappedBy="foodInfo",targetEntity=ItemResource.class)
+	private List<IItemResource> resources = new ArrayList<IItemResource>();
 	/**
 	 * @return the id
 	 */
@@ -95,7 +95,7 @@ public class FoodInfo implements IFoodInfo {
 	/**
 	 * @return the status
 	 */
-	public FoodStatus getStatus() {
+	public GoodsStatus getStatus() {
 		return status;
 	}
 
@@ -104,26 +104,26 @@ public class FoodInfo implements IFoodInfo {
 	/**
 	 * @return the classify
 	 */
-	public IFoodClassify getClassify() {
+	public IGoodsClassify getClassify() {
 		return classify;
 	}
 	/**
 	 * @param classify the classify to set
 	 */
-	public void setClassify(IFoodClassify classify) {
+	public void setClassify(IGoodsClassify classify) {
 		this.classify = classify;
 	}
 	/**
 	 * @param status the status to set
 	 */
-	public void setStatus(FoodStatus status) {
+	public void setStatus(GoodsStatus status) {
 		this.status = status;
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.entity.IFoodInfo#listResources()
 	 */
-	public List<IFoodResource> listResources() {
+	public List<IItemResource> listResources() {
 		return this.resources;
 	}
 

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import net.lw.ice.common.IFilter;
 import net.lw.ice.common.IPageResult;
 import net.lw.ice.common.filter.Filter;
-import net.lw.meetlove.api.entity.IFoodClassify;
-import net.lw.meetlove.api.service.IFoodClassifyService;
+import net.lw.meetlove.api.entity.IGoodsClassify;
+import net.lw.meetlove.api.service.IGoodsClassifyService;
 import net.lw.meetlove.web.admin.goods.form.ClassifyForm;
 import net.lw.meetlove.web.admin.goods.form.ClassifyTreeForm;
 import net.lw.meetlove.web.util.IceConstant;
@@ -39,7 +39,7 @@ import org.springframework.web.context.request.WebRequest;
 public class ClassifyController {
 
 	@Autowired
-	private IFoodClassifyService classifyService;
+	private IGoodsClassifyService classifyService;
 
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET)
@@ -47,7 +47,7 @@ public class ClassifyController {
 		ModelMap model = new ModelMap();
 
 		IFilter filter = new Filter();
-		IPageResult<IFoodClassify> pageResult = classifyService.page(start, limit, filter);
+		IPageResult<IGoodsClassify> pageResult = classifyService.page(start, limit, filter);
 
 		model.addAttribute(IceConstant.SUCCESS, true);
 		model.addAttribute(IceConstant.TOTAL, pageResult.getTotal());
@@ -60,7 +60,7 @@ public class ClassifyController {
 	public ModelMap add(@RequestBody ClassifyForm form){
 		ModelMap result = new ModelMap();
 
-		IFoodClassify classify = classifyService.make();
+		IGoodsClassify classify = classifyService.make();
 		classify.setName(form.getName());
 		classify.setRemark(form.getRemark());
 		classify.setStatus(form.getStatus());
@@ -82,7 +82,7 @@ public class ClassifyController {
 	@RequestMapping(value="/{id}",method=RequestMethod.PUT)
 	public ModelMap update(@PathVariable long id ,@RequestBody ClassifyForm form){
 		ModelMap result = new ModelMap();
-		IFoodClassify classify = classifyService.get(id);
+		IGoodsClassify classify = classifyService.get(id);
 		classify.setName(form.getName());
 		classify.setRemark(form.getRemark());
 		classify.setStatus(form.getStatus());
@@ -104,7 +104,7 @@ public class ClassifyController {
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
 	public ModelMap delete(@PathVariable long id){
 		ModelMap result = new ModelMap();
-		IFoodClassify classify = classifyService.get(id);
+		IGoodsClassify classify = classifyService.get(id);
 
 		if(classify.listClassifyChildren().size() > 0 ){
 			result.addAttribute(IceConstant.SUCCESS, false);
@@ -134,7 +134,7 @@ public class ClassifyController {
 	@RequestMapping(value="/tree",method=RequestMethod.GET)
 	public ModelMap getOrgTree(@RequestParam long node){
 		ModelMap model = new ModelMap();
-		List<IFoodClassify> classifies = new ArrayList<IFoodClassify>();
+		List<IGoodsClassify> classifies = new ArrayList<IGoodsClassify>();
 		if(node == -1){
 			classifies = classifyService.listFirstChildrenClassifies();
 		}

@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 import net.lw.ice.common.IFilter;
 import net.lw.ice.common.IPageResult;
 import net.lw.ice.domain.dao.IGenericDao;
-import net.lw.meetlove.api.entity.IFoodClassify;
-import net.lw.meetlove.api.entity.IFoodInfo;
-import net.lw.meetlove.api.service.IFoodClassifyService;
-import net.lw.meetlove.domain.entity.FoodClassify;
+import net.lw.meetlove.api.entity.IGoodsClassify;
+import net.lw.meetlove.api.entity.IGoodsItem;
+import net.lw.meetlove.api.service.IGoodsClassifyService;
+import net.lw.meetlove.domain.entity.GoodsClassify;
 
 /**
  * @author liuwei
@@ -25,7 +25,7 @@ import net.lw.meetlove.domain.entity.FoodClassify;
  */
 @Service
 @Transactional
-public class FoodClassifyService implements IFoodClassifyService {
+public class GoodsClassifyService implements IGoodsClassifyService {
 
 	@Autowired
 	private IGenericDao dao;
@@ -33,76 +33,76 @@ public class FoodClassifyService implements IFoodClassifyService {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#make()
 	 */
-	public IFoodClassify make() {
-		return new FoodClassify();
+	public IGoodsClassify make() {
+		return new GoodsClassify();
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#add(net.lw.meetlove.api.entity.IFoodClassify)
 	 */
-	public IFoodClassify add(IFoodClassify foodClassify) {
+	public IGoodsClassify add(IGoodsClassify foodClassify) {
 		return dao.save(foodClassify);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#get(long)
 	 */
-	public IFoodClassify get(long classifyId) {
-		return dao.load(classifyId, FoodClassify.class);
+	public IGoodsClassify get(long classifyId) {
+		return dao.load(classifyId, GoodsClassify.class);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#remove(long)
 	 */
 	public void remove(long id) {
-		dao.delete(id, FoodClassify.class);
+		dao.delete(id, GoodsClassify.class);
 	}
 
-	public void remove(IFoodClassify foodClassify){
+	public void remove(IGoodsClassify foodClassify){
 		dao.delete(foodClassify);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#update(net.lw.meetlove.api.entity.IFoodClassify)
 	 */
-	public void update(IFoodClassify foodClassify) {
+	public void update(IGoodsClassify foodClassify) {
 		dao.update(foodClassify);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#list()
 	 */
-	public List<IFoodClassify> list() {
-		return dao.loadAll(IFoodClassify.class);
+	public List<IGoodsClassify> list() {
+		return dao.loadAll(IGoodsClassify.class);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#listFoodInfos(long)
 	 */
-	public List<IFoodInfo> listFoodInfos(long classifyId) {
-		IFoodClassify classify = this.get(classifyId);
+	public List<IGoodsItem> listFoodInfos(long classifyId) {
+		IGoodsClassify classify = this.get(classifyId);
 		return classify.listFoodInfoChildren();
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#listChildrenClassifies(long)
 	 */
-	public List<IFoodClassify> listChildrenClassifies(long classifyId) {
-		IFoodClassify classify = this.get(classifyId);
+	public List<IGoodsClassify> listChildrenClassifies(long classifyId) {
+		IGoodsClassify classify = this.get(classifyId);
 		return classify.listClassifyChildren();
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#page(int, int, net.lw.ice.common.IFilter)
 	 */
-	public IPageResult<IFoodClassify> page(int offset, int limit, IFilter filter) {
-		return dao.page(offset, limit, filter, FoodClassify.class);
+	public IPageResult<IGoodsClassify> page(int offset, int limit, IFilter filter) {
+		return dao.page(offset, limit, filter, GoodsClassify.class);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodClassifyService#listFirstChildrenClassifies()
 	 */
-	public List<IFoodClassify> listFirstChildrenClassifies() {
+	public List<IGoodsClassify> listFirstChildrenClassifies() {
 		String hql = "from FoodClassify f where f.parent.id is null";
 		return dao.findByHQL(hql);
 	}

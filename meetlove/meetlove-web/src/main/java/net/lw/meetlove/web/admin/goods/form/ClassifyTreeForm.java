@@ -3,7 +3,7 @@ package net.lw.meetlove.web.admin.goods.form;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.lw.meetlove.api.entity.IFoodClassify;
+import net.lw.meetlove.api.entity.IGoodsClassify;
 
 public class ClassifyTreeForm {
 
@@ -14,20 +14,20 @@ public class ClassifyTreeForm {
 	public ClassifyTreeForm() {
 	}
 
-	public ClassifyTreeForm(IFoodClassify classify) {
+	public ClassifyTreeForm(IGoodsClassify classify) {
 		id = classify.getId();
 		text = classify.getName();
 		leaf = !(classify.listClassifyChildren().size()>0);
 	}
 
-	public static ClassifyTreeForm toForm(IFoodClassify classify){
+	public static ClassifyTreeForm toForm(IGoodsClassify classify){
 		ClassifyTreeForm form = new ClassifyTreeForm(classify);
 		return form;
 	}
 
-	public static List<ClassifyTreeForm> toForms(List<IFoodClassify> classifies){
+	public static List<ClassifyTreeForm> toForms(List<IGoodsClassify> classifies){
 		List<ClassifyTreeForm> forms = new ArrayList<ClassifyTreeForm>();
-		for(IFoodClassify classify : classifies){
+		for(IGoodsClassify classify : classifies){
 			forms.add(toForm(classify));
 		}
 		return forms;

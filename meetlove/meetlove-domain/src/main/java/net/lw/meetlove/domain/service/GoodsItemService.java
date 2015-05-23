@@ -10,11 +10,11 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import net.lw.ice.domain.dao.IGenericDao;
-import net.lw.meetlove.api.entity.IFoodInfo;
-import net.lw.meetlove.api.entity.IFoodResource;
-import net.lw.meetlove.api.service.IFoodInfoService;
-import net.lw.meetlove.domain.entity.FoodInfo;
-import net.lw.meetlove.domain.entity.FoodResource;
+import net.lw.meetlove.api.entity.IGoodsItem;
+import net.lw.meetlove.api.entity.IItemResource;
+import net.lw.meetlove.api.service.IGoodsItemService;
+import net.lw.meetlove.domain.entity.GoodsItem;
+import net.lw.meetlove.domain.entity.ItemResource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class FoodInfoService implements IFoodInfoService {
+public class GoodsItemService implements IGoodsItemService {
 
 
 	@Resource(name="hibernateDao")
@@ -34,29 +34,29 @@ public class FoodInfoService implements IFoodInfoService {
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#make()
 	 */
-	public IFoodInfo make() {
-		return new FoodInfo();
+	public IGoodsItem make() {
+		return new GoodsItem();
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#makeResource()
 	 */
-	public IFoodResource makeResource() {
+	public IItemResource makeResource() {
 		// TODO Auto-generated method stub
-		return new FoodResource();
+		return new ItemResource();
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#get(long)
 	 */
-	public IFoodInfo get(long infoId) {
-		return dao.load(infoId, FoodInfo.class);
+	public IGoodsItem get(long infoId) {
+		return dao.load(infoId, GoodsItem.class);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#add(net.lw.meetlove.api.entity.IFoodInfo)
 	 */
-	public IFoodInfo add(IFoodInfo foodInfo) {
+	public IGoodsItem add(IGoodsItem foodInfo) {
 		return dao.save(foodInfo);
 	}
 
@@ -64,36 +64,36 @@ public class FoodInfoService implements IFoodInfoService {
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#remove(long)
 	 */
 	public void remove(long id) {
-		dao.delete(id, FoodInfo.class);
+		dao.delete(id, GoodsItem.class);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#udpate(net.lw.meetlove.api.entity.IFoodInfo)
 	 */
-	public void udpate(IFoodInfo foodInfo) {
+	public void udpate(IGoodsItem foodInfo) {
 		dao.update(foodInfo);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#list()
 	 */
-	public List<IFoodInfo> list() {
-		return dao.loadAll(IFoodInfo.class);
+	public List<IGoodsItem> list() {
+		return dao.loadAll(IGoodsItem.class);
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#listResources(long)
 	 */
-	public List<IFoodResource> listResources(long infoId) {
-		IFoodInfo foodInfo = this.get(infoId);
+	public List<IItemResource> listResources(long infoId) {
+		IGoodsItem foodInfo = this.get(infoId);
 		return foodInfo.listResources();
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#addResources(long, net.lw.meetlove.api.entity.IFoodResources)
 	 */
-	public IFoodResource addResource(long infoId, IFoodResource resources) {
-		IFoodInfo foodInfo = this.get(infoId);
+	public IItemResource addResource(long infoId, IItemResource resources) {
+		IGoodsItem foodInfo = this.get(infoId);
 		resources.setFoodInfo(foodInfo);
 		return dao.save(resources);
 	}
@@ -102,7 +102,7 @@ public class FoodInfoService implements IFoodInfoService {
 	 * @see net.lw.meetlove.api.service.IFoodInfoService#removeResources(long, long)
 	 */
 	public void removeResource(long resourceId) {
-		dao.delete(resourceId, FoodResource.class);
+		dao.delete(resourceId, ItemResource.class);
 	}
 
 	/* (non-Javadoc)

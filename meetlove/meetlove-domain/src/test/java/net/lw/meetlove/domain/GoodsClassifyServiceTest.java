@@ -7,10 +7,10 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import net.lw.ice.domain.test.BindSessionInTest;
-import net.lw.meetlove.api.entity.FoodStatus;
-import net.lw.meetlove.api.entity.IFoodClassify;
-import net.lw.meetlove.api.entity.IFoodInfo;
-import net.lw.meetlove.api.service.IFoodClassifyService;
+import net.lw.meetlove.api.entity.GoodsStatus;
+import net.lw.meetlove.api.entity.IGoodsClassify;
+import net.lw.meetlove.api.entity.IGoodsItem;
+import net.lw.meetlove.api.service.IGoodsClassifyService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,19 +22,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=MysqlTestConfig.class)
-public class FoodClassifyServiceTest extends BindSessionInTest {
+public class GoodsClassifyServiceTest extends BindSessionInTest {
 
-	private final Logger logger = LoggerFactory.getLogger(FoodClassifyServiceTest.class);
+	private final Logger logger = LoggerFactory.getLogger(GoodsClassifyServiceTest.class);
 
 	@Autowired
-	private IFoodClassifyService classifyService;
+	private IGoodsClassifyService classifyService;
 
 	@Test
 	public void testAdd(){
-		IFoodClassify classify = classifyService.make();
+		IGoodsClassify classify = classifyService.make();
 		classify.setName("test6");
 		classify.setRemark("test7");
-		classify.setStatus(FoodStatus.OFF);
+		classify.setStatus(GoodsStatus.OFF);
 
 		classify = classifyService.add(classify);
 
@@ -48,30 +48,30 @@ public class FoodClassifyServiceTest extends BindSessionInTest {
 
 	@Test
 	public void testUpdate(){
-		IFoodClassify classify = classifyService.get(3);
+		IGoodsClassify classify = classifyService.get(3);
 		classify.setName(classify.getName()+"_update");
 		classifyService.update(classify);
 
-		IFoodClassify classify2 = classifyService.get(3);
+		IGoodsClassify classify2 = classifyService.get(3);
 		logger.debug(classify2.getName());
 	}
 
 	@Test
 	public void testList(){
-		List<IFoodClassify> list = classifyService.list();
+		List<IGoodsClassify> list = classifyService.list();
 		assertEquals(2, list.size());
 	}
 
 	public void testGet(){
-		IFoodClassify classify = classifyService.get(10);
+		IGoodsClassify classify = classifyService.get(10);
 		assertNull(classify);
 	}
 
 	@Test
 	public void testListFoodInfos(){
-		List<IFoodInfo> infos = classifyService.listFoodInfos(4);
+		List<IGoodsItem> infos = classifyService.listFoodInfos(4);
 		logger.info("******************************************");
-		for(IFoodInfo info : infos){
+		for(IGoodsItem info : infos){
 			logger.info(info.getName());
 		}
 		logger.info("******************************************");
@@ -79,9 +79,9 @@ public class FoodClassifyServiceTest extends BindSessionInTest {
 
 	@Test
 	public void testListFirstChildrenClassifies(){
-		List<IFoodClassify> classifies = classifyService.listFirstChildrenClassifies();
+		List<IGoodsClassify> classifies = classifyService.listFirstChildrenClassifies();
 		logger.info("******************************************");
-		for(IFoodClassify classify : classifies){
+		for(IGoodsClassify classify : classifies){
 			logger.info(classify.getName());
 		}
 		logger.info("******************************************");

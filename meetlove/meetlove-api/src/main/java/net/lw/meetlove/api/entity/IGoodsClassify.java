@@ -2,7 +2,7 @@ package net.lw.meetlove.api.entity;
 
 import java.util.List;
 
-public interface IFoodClassify {
+public interface IGoodsClassify {
 
 	public long getId();
 
@@ -14,16 +14,16 @@ public interface IFoodClassify {
 
 	public String getRemark();
 
-	public void setStatus(FoodStatus foodStatus);
+	public void setStatus(GoodsStatus foodStatus);
 
-	public FoodStatus getStatus();
+	public GoodsStatus getStatus();
 
 	public void setSort(int sort);
 
 	public int getSort();
 
-	public List<IFoodClassify> listClassifyChildren();
+	public List<IGoodsClassify> listClassifyChildren();
 
-	public List<IFoodInfo> listFoodInfoChildren();
+	public List<IGoodsItem> listFoodInfoChildren();
 
 }

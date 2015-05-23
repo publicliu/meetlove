@@ -21,9 +21,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import net.lw.meetlove.api.entity.FoodStatus;
-import net.lw.meetlove.api.entity.IFoodClassify;
-import net.lw.meetlove.api.entity.IFoodInfo;
+import net.lw.meetlove.api.entity.GoodsStatus;
+import net.lw.meetlove.api.entity.IGoodsClassify;
+import net.lw.meetlove.api.entity.IGoodsItem;
 
 /**
  * @author liuwei
@@ -31,7 +31,7 @@ import net.lw.meetlove.api.entity.IFoodInfo;
  */
 @Entity
 @Table(name = "ML_FOODCLASSIFY" )
-public class FoodClassify implements IFoodClassify {
+public class GoodsClassify implements IGoodsClassify {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO,generator="SEQ_ML_FOODCLASSIFY")
@@ -46,21 +46,21 @@ public class FoodClassify implements IFoodClassify {
 	private String remark;
 
 	@Column(name = "STATUS",nullable = false,length=1)
-	private FoodStatus status;
+	private GoodsStatus status;
 
 	@Column(name = "SORT",nullable = false)
 	private int sort = 0;
 
-	@ManyToOne(fetch = FetchType.LAZY,targetEntity=net.lw.meetlove.domain.entity.FoodClassify.class)
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity=net.lw.meetlove.domain.entity.GoodsClassify.class)
 	@JoinColumn(name="PARENT_ID")
-	private IFoodClassify parent;
+	private IGoodsClassify parent;
 
-	@OneToMany(mappedBy="parent",targetEntity=net.lw.meetlove.domain.entity.FoodClassify.class)
-	private List<IFoodClassify> childrenClassifies = new ArrayList<IFoodClassify>();
+	@OneToMany(mappedBy="parent",targetEntity=net.lw.meetlove.domain.entity.GoodsClassify.class)
+	private List<IGoodsClassify> childrenClassifies = new ArrayList<IGoodsClassify>();
 
 
-	@OneToMany(mappedBy="classify",targetEntity=FoodInfo.class)
-	private List<IFoodInfo> childrenFoodInfos = new ArrayList<IFoodInfo>();
+	@OneToMany(mappedBy="classify",targetEntity=GoodsItem.class)
+	private List<IGoodsItem> childrenFoodInfos = new ArrayList<IGoodsItem>();
 	/**
 	 * @return the id
 	 */
@@ -100,13 +100,13 @@ public class FoodClassify implements IFoodClassify {
 	/**
 	 * @return the foodStatus
 	 */
-	public FoodStatus getStatus() {
+	public GoodsStatus getStatus() {
 		return status;
 	}
 	/**
 	 * @param foodStatus the foodStatus to set
 	 */
-	public void setStatus(FoodStatus foodStatus) {
+	public void setStatus(GoodsStatus foodStatus) {
 		this.status = foodStatus;
 	}
 	/**
@@ -125,21 +125,21 @@ public class FoodClassify implements IFoodClassify {
 	/**
 	 * @param parent the parent to set
 	 */
-	public void setParent(IFoodClassify parent) {
+	public void setParent(IGoodsClassify parent) {
 		this.parent = parent;
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.entity.IFoodClassify#listClassifyChildren()
 	 */
-	public List<IFoodClassify> listClassifyChildren() {
+	public List<IGoodsClassify> listClassifyChildren() {
 		return this.childrenClassifies;
 	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.entity.IFoodClassify#listFoodInfoChildren()
 	 */
-	public List<IFoodInfo> listFoodInfoChildren() {
+	public List<IGoodsItem> listFoodInfoChildren() {
 		return this.childrenFoodInfos;
 	}
 
