@@ -102,17 +102,14 @@ Ext.define('Eway.controller.goods.classify.Main', {
 		var sm = grid.getSelectionModel();
 		var flag = true;
 		if(sm.getCount() == 1) {
-			var tree = this.getOrgTree();
-			var treeRecord = tree.getSelectionModel().getLastSelected();
-
-			var win = Ext.create('Eway.view.user.Update');
+			var win = Ext.create('Eway.view.goods.classify.Update');
 			var record = sm.getLastSelected();
 			var form = win.down('form').getForm();
 			form.loadRecord(record);
-			form.setValues({
+			/*form.setValues({
 	    		orgName : treeRecord.data.text,
 	    		orgCode : treeRecord.data.id
-	    	});
+	    	});*/
 	    	win.down('button[action="confirm"]').on('click',this.onUpdateWinConfirm,this);
 			win.show();
 		}else {
@@ -127,16 +124,29 @@ Ext.define('Eway.controller.goods.classify.Main', {
 		data = win.down('form').getForm().getValues();
 		var record = Ext.ModelManager.create(data, 'Eway.model.goods.Classify');
 		if(win.down('form').getForm().isValid()){
-			record.save({
+			var store = me.getGrid().getStore();
+			store.add(record);
+			store.sync({
+				success : function(){
+					Ext.MessageBox.alert('提示','新增分类信息成功');
+					win.close();
+				},
+				failure : function(){
+					store.rejectChanges();
+					Ext.MessageBox.alert('提示','新增分类信息失败');
+				}
+
+			});
+			/*record.save({
 				success : function(record,operation){
-					me.getGrid().getStore().load();
+//					me.getGrid().getStore().load();
 					Ext.MessageBox.alert('提示','新增分类信息成功');
 					win.close();
 			    },
 			    failure: function(record,operation){
 					Ext.Msg.alert("提示", operation.request.scope.reader.jsonData.errors);
 				}
-			});
+			});*/
 		}
 	},
 

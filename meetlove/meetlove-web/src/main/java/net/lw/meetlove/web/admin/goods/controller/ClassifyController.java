@@ -5,6 +5,8 @@
  */
 package net.lw.meetlove.web.admin.goods.controller;
 
+import java.text.Normalizer.Form;
+
 import javax.servlet.http.HttpServletRequest;
 
 import net.lw.ice.common.IFilter;
@@ -60,7 +62,7 @@ public class ClassifyController {
 		IFoodClassify classify = classifyService.make();
 		classify.setName(form.getName());
 		classify.setRemark(form.getRemark());
-		classify.setStatus(FoodStatus.ON);
+		classify.setStatus(form.getStatus());
 
 		try {
 			classify = classifyService.add(classify);

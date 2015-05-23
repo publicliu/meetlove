@@ -32,13 +32,13 @@ public class FoodClassifyServiceTest extends BindSessionInTest {
 	@Test
 	public void testAdd(){
 		IFoodClassify classify = classifyService.make();
-		classify.setName("港式甜品");
-		classify.setRemark("好吃的港式甜品");
-		classify.setStatus(FoodStatus.ON);
+		classify.setName("test6");
+		classify.setRemark("test7");
+		classify.setStatus(FoodStatus.OFF);
 
 		classify = classifyService.add(classify);
 
-		assertNotNull(classify.getId());
+
 	}
 
 	@Test

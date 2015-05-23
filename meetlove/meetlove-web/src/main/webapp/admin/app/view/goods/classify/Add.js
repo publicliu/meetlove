@@ -10,6 +10,7 @@ Ext.define('Eway.view.goods.classify.Add', {
 	width: 300,
 	height: 250,
 	initComponent: function() {
+		var statusStore = Ext.create('Eway.store.goods.GoodsStatus');
 		Ext.apply(this, {
 			items :[ {
 				xtype: 'form',
@@ -31,9 +32,16 @@ Ext.define('Eway.view.goods.classify.Add', {
 					fieldLabel : '分类描述',
 					name : 'remark'
 				},{
-					xtype : 'textfield',
+					xtype : 'combobox',
 					fieldLabel : '分类状态',
-					name : 'status'
+					name : 'status',
+					displayField : 'name',
+					queryMode: 'local',
+					store : statusStore,
+					valueField : 'status',
+					typeAhead: true,
+			        forceSelection: true,
+			        autoSelect : true
 				}]
 			}],
 			buttonAlign : 'center',
