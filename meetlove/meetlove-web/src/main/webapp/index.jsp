@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" type="text/css" href="lib/extjs/packages/ext-theme-classic/build/resources/ext-theme-classic-all.css" media="all" />
   <link rel="stylesheet" type="text/css" href="resources/admin/css/meetlove-base.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="resources/admin/css/data-view.css" media="all" />
   <script type="text/javascript" src="lib/extjs/ext-all-debug.js"></script>
   <script type="text/javascript" src="lib/extjs/locale/ext-lang-zh_CN.js"></script>
 

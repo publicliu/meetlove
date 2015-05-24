@@ -19,6 +19,9 @@ Ext.define('Eway.controller.system.Args', {
     init : function(){
    		var me = this;
    		me.control({
+   			'system_args button[action=query]' : {
+   				click : me.onQuery
+   			},
    			'system_args button[action=add]' : {
    				click : me.onAdd
    			},
@@ -31,7 +34,10 @@ Ext.define('Eway.controller.system.Args', {
    		});
     },
 
-
+    onQuery : function(){
+		var store = this.getGrid().getStore();
+		store.load();
+    },
 
     onAdd : function(){
     	var addWin = Ext.create('Eway.view.system.Add');

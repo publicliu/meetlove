@@ -28,6 +28,13 @@ public class SystemArgsService implements ISystemArgsService {
 	@Autowired
 	private IGenericDao dao;
 
+	/* (non-Javadoc)
+	 * @see net.lw.meetlove.api.service.ISystemArgsService#get(java.lang.String)
+	 */
+	public ISystemArgs get(String name) {
+		String hql = "from SystemArgs s where s.name = ?";
+		return dao.findUniqueByHql(hql, name);
+	}
 
 	/* (non-Javadoc)
 	 * @see net.lw.meetlove.api.service.ISystemArgsService#make()

@@ -72,7 +72,7 @@
 		</property>
 	</bean>
 
-	<!-- 测试数据
-	<import resource="classpath:init-data.xml"/>-->
+	<!-- 测试数据-->
+	<import resource="classpath:init-data.xml"/>
 
 </beans>

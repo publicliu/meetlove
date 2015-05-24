@@ -6,7 +6,8 @@ Ext.define('Eway.view.goods.item.Main',{
 	requires : [
 		'Eway.view.goods.item.FilterForm',
 		'Eway.view.goods.item.ItemGrid',
-		'Eway.view.goods.classify.ClassifyTree'
+		'Eway.view.goods.classify.ClassifyTree',
+		'Eway.view.goods.item.DataView'
 	],
 
 	initComponent : function(){
@@ -28,7 +29,8 @@ Ext.define('Eway.view.goods.item.Main',{
 					xtype : 'goods_item_filterform'
 				},{
 					region : 'center',
-					xtype : 'goods_item_itemgrid'
+//					xtype : 'goods_item_itemgrid'
+					xtype : 'goods_item_dataview'
 				}]
 			}]
 		});

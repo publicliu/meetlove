@@ -7,7 +7,8 @@ Ext.define('Eway.view.base.ComboTree',{
 	config : {
 		hiddenValue : '',
 		rootVisible : false,
-		expandRoot:true
+		expandRoot:true,
+		valueField : ''
 	},
 
 	trigger1Cls : Ext.baseCSSPrefix + "form-clear-trigger",
@@ -42,7 +43,15 @@ Ext.define('Eway.view.base.ComboTree',{
 	},
 
 	onTreeItemClick : function(view,record){
-		this.setValue(record.get('text'));
+		var me = this;
+		me.hiddenValue = record.get(me.valueField);
+		me.setValue(record.get('text'));
 		this.collapse();
-	}
+	},
+
+
+    getSubmitValue : function(){
+    	var me = this;
+    	return me.processRawValue(me.hiddenValue);
+    }
 });

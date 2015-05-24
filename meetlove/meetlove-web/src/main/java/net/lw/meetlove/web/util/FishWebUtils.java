@@ -1,6 +1,12 @@
 package net.lw.meetlove.web.util;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
+
+import net.lw.meetlove.api.service.ISystemArgsService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 
@@ -12,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2011-4-26
  */
 public class FishWebUtils {
+
+	public static String resourceRootPath = "";
+	public static String resourceImgPath = "";
 
 	public static final String USER = "SESSION_USER";
 
@@ -35,7 +44,13 @@ public class FishWebUtils {
 		return FishWebUtils.getUserSession(request).getUserId();
 	}
 
-	public static String getResourcesPath(){
-		return "D:\\meetlove";
+	public static String createFileName(String fileName){
+		return (new Date()).getTime()+fileName.substring(fileName.lastIndexOf("."));
 	}
+
+	public static void main(String[] args) {
+		String fileName = "123.jpg";
+		System.out.println(createFileName(fileName));
+	}
+
 }

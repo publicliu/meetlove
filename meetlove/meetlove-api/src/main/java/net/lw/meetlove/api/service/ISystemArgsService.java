@@ -12,6 +12,8 @@ public interface ISystemArgsService {
 
 	public ISystemArgs get(long id);
 
+	public ISystemArgs get(String name);
+
 	public ISystemArgs add(ISystemArgs args);
 
 	public void remove(ISystemArgs args);

@@ -31,16 +31,21 @@ Ext.define('Eway.view.goods.item.Add', {
 				items: [{
 					xtype : 'base_combotree',
 					store : classifyTreeStore,
-					fieldLabel : '<font color="red">*</font>分类名称',
+					fieldLabel : '<font color="red">*</font>所属分类',
 					allowBlank : false,
+					name : 'classifyId',
+					valueField : 'id'
+				},{
+					xtype : 'textfield',
+					fieldLabel : '商品名称',
 					name : 'name'
 				},{
 					xtype : 'textfield',
-					fieldLabel : '分类描述',
+					fieldLabel : '商品描述',
 					name : 'remark'
 				},{
 					xtype : 'combobox',
-					fieldLabel : '分类状态',
+					fieldLabel : '商品状态',
 					name : 'status',
 					displayField : 'name',
 					queryMode: 'local',
@@ -49,6 +54,13 @@ Ext.define('Eway.view.goods.item.Add', {
 					typeAhead: true,
 			        forceSelection: true,
 			        autoSelect : true
+				},{
+					xtype : 'filefield',
+					fieldLabel : '显示图片',
+					name : 'file'
+				},{
+					xtype : 'textfield',
+					name : 'resourceName'
 				}]
 			}],
 			buttonAlign : 'center',

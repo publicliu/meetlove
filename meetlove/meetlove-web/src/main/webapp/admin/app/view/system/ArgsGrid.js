@@ -9,6 +9,10 @@ Ext.define('Eway.view.system.ArgsGrid',{
 
 		Ext.apply(this,{
 			tbar : ['->',{
+				iconCls :'queryBtn',
+				action: 'query',
+				text : '刷新'
+			},{
 				iconCls :'addBtn',
 				action: 'add',
 				text : '增加'

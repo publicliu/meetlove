@@ -8,8 +8,8 @@ Ext.define('Eway.controller.goods.item.Main', {
     	autoCreate : true,
     	xtype: 'goods_item_main'
     },{
-		ref: 'grid',
-		selector: 'goods_item_itemgrid'
+		ref: 'dataview',
+		selector: 'goods_item_dataview'
 	}],
 
     views : [
@@ -120,32 +120,39 @@ Ext.define('Eway.controller.goods.item.Main', {
     	var me = this;
 		var ewayView = this.getEwayView();
 		var win = this.addWin;
-		data = win.down('form').getForm().getValues();
-		var record = Ext.ModelManager.create(data, 'Eway.model.goods.Item');
-		if(win.down('form').getForm().isValid()){
-			var store = me.getGrid().getStore();
-			store.add(record);
-			store.sync({
-				success : function(){
-					Ext.MessageBox.alert('提示','新增分类信息成功');
-					win.close();
+		var form = win.down('form').getForm();
+		if(form.isValid()){
+
+			form.submit({
+				url : 'api/admin/goods/item/uploadResource',
+				waitMsg : '正在上传资源',
+				success : function(form,action){
+					var response = Ext.decode(action.response.responseText);
+					form.setValues({
+						'resourceName' : response.data
+					});
+
+					var data = form.getValues();
+					var record = Ext.ModelManager.create(data, 'Eway.model.goods.Item');
+					var store = me.getDataview().getComponent('itemDataviewId').getStore();
+					store.add(record);
+					store.sync({
+						success : function(){
+							Ext.MessageBox.alert('提示','新增分类信息成功');
+							win.close();
+						},
+						failure : function(){
+							store.rejectChanges();
+							Ext.MessageBox.alert('提示','新增分类信息失败');
+						}
+
+					});
 				},
 				failure : function(){
-					store.rejectChanges();
-					Ext.MessageBox.alert('提示','新增分类信息失败');
-				}
-
+					Ext.MessageBox.alert('提示','失败');
+				},
+				scope : me
 			});
-			/*record.save({
-				success : function(record,operation){
-//					me.getGrid().getStore().load();
-					Ext.MessageBox.alert('提示','新增分类信息成功');
-					win.close();
-			    },
-			    failure: function(record,operation){
-					Ext.Msg.alert("提示", operation.request.scope.reader.jsonData.errors);
-				}
-			});*/
 		}
 	},
 

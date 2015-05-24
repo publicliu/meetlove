@@ -1,11 +1,18 @@
 package net.lw.meetlove.web.init;
 
+import java.io.File;
+
 import net.lw.ice.api.person.entity.IOrganization;
 import net.lw.ice.api.person.entity.IPerson;
 import net.lw.ice.api.person.entity.IUser;
 import net.lw.ice.api.person.service.IOrganizationService;
 import net.lw.ice.api.person.service.IPersonService;
 import net.lw.ice.api.person.service.IUserService;
+import net.lw.meetlove.api.entity.ISystemArgs;
+import net.lw.meetlove.api.entity.SystemArgsName;
+import net.lw.meetlove.api.entity.SystemArgsType;
+import net.lw.meetlove.api.service.ISystemArgsService;
+import net.lw.meetlove.web.util.FishWebUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,10 +26,41 @@ public class MeetloveInit {
 	private IUserService userService;
 	@Autowired
 	private IPersonService personService;
+	@Autowired
+	private ISystemArgsService argsService;
 
 	public void init(){
-		this.initOrg();
+		/*this.initOrg();
 		this.initUser();
+		this.initArgs();*/
+		this.setArgs();
+	}
+
+
+	/**
+	 *
+	 */
+	private void setArgs() {
+		FishWebUtils.resourceRootPath = argsService.get(SystemArgsName.RESOURCE_ROOT_DIR).getValue();
+		FishWebUtils.resourceImgPath = FishWebUtils.resourceRootPath + File.separator+"IMAGES";
+		File file = new File(FishWebUtils.resourceImgPath);
+		if(!file.exists()){
+			file.mkdirs();
+		}
+	}
+
+
+	/**
+	 *
+	 */
+	private void initArgs() {
+		ISystemArgs args = argsService.make();
+		args.setName(SystemArgsName.RESOURCE_ROOT_DIR);
+		args.setValue("D:\\ICE");
+		args.setRemark("Windows平台资源跟目录");
+		args.setType(SystemArgsType.SYSTEM);
+		argsService.add(args);
+
 	}
 
 	private void initOrg(){

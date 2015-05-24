@@ -48,6 +48,13 @@ public class SystemArgsServiceTest extends BindSessionInTest {
 	}
 
 	@Test
+	public void testGetByName(){
+		ISystemArgs args = argsService.get("resource");
+		logger.debug("*****************************");
+		logger.debug(args.getValue());
+	}
+
+	@Test
 	public void testRemove(){
 	}
 

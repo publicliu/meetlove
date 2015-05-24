@@ -36,13 +36,32 @@ public class GoodsItemServiceTest extends BindSessionInTest {
 
 	@Test
 	public void testAdd(){
-		IGoodsClassify classify = classifyService.get(4);//港式甜品
+		IGoodsClassify classify = classifyService.get(1);//港式甜品
 		IGoodsItem foodInfo = infoService.make();
 		foodInfo.setClassify(classify);
-		foodInfo.setName("冰冻草莓2");
-		foodInfo.setRemark("冰冻草莓2");
+		foodInfo.setName("冰冻草莓");
+		foodInfo.setRemark("冰冻草莓");
 		foodInfo.setStatus(GoodsStatus.ON);
-		infoService.add(foodInfo);
+		foodInfo = infoService.add(foodInfo);
+
+		IItemResource resource = infoService.makeResource();
+		resource.setGoodsItem(foodInfo);
+		resource.setName("caomei1.jpg");
+		resource.setType(ItemResourceType.IMAGE);
+		infoService.addResource(foodInfo.getId(), resource);
+
+		IGoodsItem item2 = infoService.make();
+		item2.setClassify(classify);
+		item2.setName("冰冻草莓2");
+		item2.setRemark("冰冻草莓2");
+		item2.setStatus(GoodsStatus.ON);
+		item2 = infoService.add(item2);
+
+		IItemResource resource2 = infoService.makeResource();
+		resource2.setGoodsItem(foodInfo);
+		resource2.setName("caomei1.jpg");
+		resource2.setType(ItemResourceType.IMAGE);
+		infoService.addResource(item2.getId(), resource2);
 	}
 
 	@Test
