@@ -26,6 +26,8 @@ public class ItemForm {
 	private String resourceName;
 	private String resourcePath;
 	private long classifyId;
+	private long price;
+	private long oldPrice;
 	public ItemForm() {}
 
 
@@ -55,8 +57,12 @@ public class ItemForm {
 		form.setName(item.getName());
 		form.setRemark(item.getRemark());
 		form.setStatus(item.getStatus());
+		form.setPrice(item.getPrice());
+		form.setOldPrice(item.getOldPrice());
+
 		IGoodsClassify classify = item.getClassify();
 		form.setClassifyId(classify.getId());
+
 
 
 		List<IItemResource> resources = item.listResources();
@@ -126,6 +132,42 @@ public class ItemForm {
 	public void setStatus(GoodsStatus status) {
 		this.status = status;
 	}
+	/**
+	 * @return the price
+	 */
+	public long getPrice() {
+		return price;
+	}
+
+
+
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(long price) {
+		this.price = price;
+	}
+
+
+
+	/**
+	 * @return the oldPrice
+	 */
+	public long getOldPrice() {
+		return oldPrice;
+	}
+
+
+
+	/**
+	 * @param oldPrice the oldPrice to set
+	 */
+	public void setOldPrice(long oldPrice) {
+		this.oldPrice = oldPrice;
+	}
+
+
+
 	/**
 	 * @return the resourceName
 	 */

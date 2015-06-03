@@ -3,7 +3,7 @@
 	margin: 5px;
 	padding: 0px;
 	border-color: black;
-	border-style: solid;
+	border-style: none;
 	border-width: 1px;
 	cursor: pointer;
 	height:80px;
@@ -45,4 +45,17 @@
 #images-view ul li {
 	float: left;
 	overflow: hidden;
+}
+
+.price{
+	font-size: 10px;
+	color: red;
+	text-decoration: line-through;
+}
+
+
+.listview-img{
+	padding: 5px;
+	height: 70px;
+	width: 70px;
 }

@@ -62,7 +62,7 @@ public class MeetLoveController {
 			logger.debug("content--->");
 			logger.debug(content);
 			ReceiveTextMsgForm receiveForm = getReceiveMsg(content);
-			String sendMsg = SendTextMsgForm.asXml(SendTextMsgForm.toForm(receiveForm, "<a href='http://115.159.33.156/ice-web/meetlove.html'>遇见爱</a>"));
+			String sendMsg = SendTextMsgForm.asXml(SendTextMsgForm.toForm(receiveForm, "<a href='http://115.159.33.156/meetlove-web/custom/api/index'>遇见爱</a>"));
 			logger.debug("sendMsg--->");
 			logger.debug(sendMsg);
 			logger.debug("消息回复结束");

@@ -21,4 +21,10 @@ public interface IGoodsItem {
 	public IGoodsClassify getClassify();
 
 	public List<IItemResource> listResources();
+
+	public void setPrice(long price);
+	public long getPrice();
+
+	public void setOldPrice(long oldPrice);
+	public long getOldPrice();
 }

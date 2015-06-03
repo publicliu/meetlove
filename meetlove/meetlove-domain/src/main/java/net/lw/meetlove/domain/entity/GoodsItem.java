@@ -49,6 +49,13 @@ public class GoodsItem implements IGoodsItem {
 	@Column(name = "STATUS")
 	private GoodsStatus status;
 
+	@Column(name = "PRICE")
+	private long price;
+
+	@Column(name = "OLD_PRICE")
+	private long oldPrice;
+
+
 	@ManyToOne(fetch = FetchType.LAZY,targetEntity= net.lw.meetlove.domain.entity.GoodsClassify.class)
 	@JoinColumn(name="CLASSIFY_ID")
 	private IGoodsClassify classify;
@@ -99,8 +106,30 @@ public class GoodsItem implements IGoodsItem {
 		return status;
 	}
 
-
-
+	/**
+	 * @return the price
+	 */
+	public long getPrice() {
+		return price;
+	}
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(long price) {
+		this.price = price;
+	}
+	/**
+	 * @return the oldPrice
+	 */
+	public long getOldPrice() {
+		return oldPrice;
+	}
+	/**
+	 * @param oldPrice the oldPrice to set
+	 */
+	public void setOldPrice(long oldPrice) {
+		this.oldPrice = oldPrice;
+	}
 	/**
 	 * @return the classify
 	 */

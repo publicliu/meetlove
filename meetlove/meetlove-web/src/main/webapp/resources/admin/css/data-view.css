@@ -23,7 +23,7 @@
     padding: 5px;
 }
 #images-view .thumb-wrap span {
-    
+
     display: block;
     overflow: hidden;
     text-align: center;
@@ -32,12 +32,12 @@
 
 #images-view .x-item-over{
     border:1px solid #dddddd;
-    background: #efefef url(over.gif) repeat-x left top;
+    background: #efefef url(../images/over.gif) repeat-x left top;
     padding: 4px;
 }
 
 #images-view .x-item-selected{
-    background: #eff5fb url(selected.gif) no-repeat right bottom;
+    background: #eff5fb url(../images/selected.gif) no-repeat right bottom;
     border:1px solid #99bbe8;
     padding: 4px;
 }
